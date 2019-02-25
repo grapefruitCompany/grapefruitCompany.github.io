@@ -1,0 +1,62 @@
+.blogs {
+  display: flex;
+  flex-direction: column;
+  // max-width: 340px;
+
+  @media screen and (max-width: $xs) {
+    width: 300px;
+  }
+
+  &__title {
+    font-family: $bold-family;
+    font-weight: normal;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: $color-lightblack;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+
+    &:last-child {
+      margin-bottom: 0;      
+    }
+  }
+
+  &__images {
+    width: 120px;
+    height: 80px;
+    flex-basis: 120px;
+    flex-grow: 1;
+  }
+
+  &__text {
+    flex-grow: 2;
+    margin-left: 20px;
+  }
+
+  &__advt {
+    font-family: $roboto-family;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    text-transform: uppercase;
+    color: $color-lightblack;
+
+    &:hover {
+      text-decoration: underline;
+    }    
+  }
+  
+  &__date {
+    font-family: $roboto-family;
+    font-style: italic;
+    font-size: 0.8125rem;
+    line-height: 1.5rem;
+    color: $par-color;    
+  }
+}

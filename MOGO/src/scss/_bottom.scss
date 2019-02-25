@@ -1,0 +1,258 @@
+.bottom {
+  margin-bottom: 70px;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end; 
+
+  @media screen and (max-width: $m) {
+    justify-content: space-evenly;
+  } 
+
+  @media screen and (max-width: $xs) {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  } 
+  
+  &__item {
+    text-align: left;
+    flex-basis: 300px;
+    margin-right: 30px; 
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: $xs) {
+      margin-right: 0;
+    }
+
+    &--mogo {
+      flex-grow: 2;
+      
+      @media screen and (max-width: $m) {
+        flex-basis: 900px;
+        order: 1;
+      } 
+
+      @media screen and (max-width: $s) {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+    }
+
+    &--blogs {
+      flex-grow: 1;
+
+      @media screen and (max-width: $m) {
+        margin-bottom: 30px;
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: $s) {
+        flex-grow: 1;
+        flex-basis: 0;
+        margin-right: 0;
+      }
+    }
+
+    &--insta {
+      flex-basis: 268px;
+
+      @media screen and (max-width: $m) {
+        margin-bottom: 30px;
+      }
+
+      @media screen and (max-width: $s) {
+        flex-grow: 1;
+        flex-basis: 0;
+        margin-right: 0;
+      }
+    }
+  
+    @media screen and (max-width: $xs) {
+      flex-basis: 300px;
+    }
+
+  }
+
+  &__logo {
+    font-family: $bold-family;
+    font-size: 2.875rem;
+    line-height: 2.875rem;
+    font-weight: bold;
+    color: $lighter-gray;
+    margin-bottom: 40px; 
+  }
+  
+  &__text {
+    font-family: $roboto-family;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    color: $lighter-gray;
+    margin-bottom: 45px;
+
+    @media screen and (max-width: $xs) {
+      text-align: justify;
+    }
+    
+  }
+
+  &__social {
+    
+    @media screen and (max-width: $m) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    @media screen and (max-width: $s) {
+      display: block;
+    }
+  }
+
+  &__followers {
+    font-family: $bold-family;
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+    font-weight: bold;
+    color: $color-lightblack;
+    margin-bottom: 20px; 
+    padding-bottom: 20px;
+    border-bottom: 1px solid $light-gray;
+
+    @media screen and (max-width: $m) {
+      border:0;
+    } 
+
+    @media screen and (max-width: $s) {
+      border-bottom: 1px solid $light-gray;
+    }
+  }
+
+  &__simple {
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    font-weight: normal;
+  }
+
+  &__line {
+    font-family: $roboto-family;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    font-style: italic;
+    color: $par-color;
+    margin-right: 20px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px; 
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--fb {
+      background-image: url("../img/svg/facebook.svg");
+    }
+
+    &--tw {
+      background-image: url("../img/svg/twitter.svg");
+    }
+
+    &--ig {
+      background-image: url("../img/svg/instagram.svg");
+    }
+
+    &--pt {
+      background-image: url("../img/svg/pinterest.svg");
+    }
+
+    &--gp {
+      background-image: url("../img/svg/google-plus.svg");
+    }
+
+    &--yt {
+      background-image: url("../img/svg/youtube.svg");
+    }
+
+    &--dr {
+      background-image: url("../img/svg/dribbble.svg");
+    }
+
+    &--tb {
+      background-image: url("../img/svg/tumblr.svg");
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: flex-start;
+
+    @media screen and (min-width: $xs + 1px) {
+      max-width: 380px;      
+    }
+
+    @media screen and (max-width: $xs) {
+      flex-direction: column;
+      justify-content: center;      
+    }
+  }
+
+  &__email {
+    flex-grow: 3;
+    flex-basis: 180px;
+    height: 40px;
+    padding: 0 5px;
+    background-color: $color-white;
+    font-family: $roboto-family;
+    font-size: 0.9375rem;
+    line-height: 40px;
+    font-style: italic;
+    color: $lighter-gray;
+    border: 1px solid $lighter-gray;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    @media screen and (max-width: $xs) {
+      flex-grow: 1;
+      flex-basis: 0;      
+    }
+  } 
+
+  &__btn {
+    flex-grow: 2;
+    height: 40px;
+    padding: 0 5px;
+    font-family: $bold-family;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 40px;
+    color: $color-white;
+    background-color: $color-sky;
+    transition: all .5s;
+    border: 1px solid $lighter-gray;
+    border-left: 0;
+    cursor: pointer;
+
+    @media screen and (max-width: $xs) {
+      flex-grow: 1;      
+    }
+
+    &:hover {
+      color: $color-sky;
+      background-color: $color-white;  
+    }
+  } 
+}

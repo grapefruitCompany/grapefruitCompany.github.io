@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="center">
+    <p class="center__text">
+      Console - means result will bee seen in console.
+    </p>
+    <button class="btn btn--name">Variables Names - Console</button>
+    <button class="btn btn--alerts">Menu - Alerts</button>
+    <button class="btn btn--console">Menu - Console</button>
+    <button class="btn btn--maria">Maria Mood - Alerts</button>
+    <button class="btn btn--sale">Sale at Shop - Console</button>   
+  </div>
+  
+
+  <!-- JS -->
+  <script>
+    var btnName = document.querySelector('.btn--name');
+
+    function courseTask() {
+
+      var courseName = 'Mate Academy';
+      var groupNames = ['fe_oct18', 'fe_oct17', 'fe_oct16', 'fe_oct15'];
+      var myGroupName = 'fe_oct18';
+      var mySchoolmateNames = ['Roman', 'Veronika', 'Ivan', 'Alina', 'Cookies', 'Dima', 'Julia', 'Sergey', 'Anton', 'Tanya'];
+    }
+
+    btnName.addEventListener('click', function() {
+      console.log(courseTask);  
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+  <!-- JS -->
+</body>
+</html>

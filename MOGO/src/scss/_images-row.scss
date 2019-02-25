@@ -1,0 +1,221 @@
+@mixin image-width($value) {
+  &--about {
+    width: $value;
+    max-width: 380px;
+    height: $value * 250/380;
+    max-height: 250px;
+  }
+
+  &--team {
+    width: $value;
+    max-width: 380px;
+    height: $value * 470/380;
+    max-height: 470px;
+  }
+}
+
+@mixin image-xs-width($value) {
+  &--about {
+    width: 380px;
+    max-width: $value;
+    height: 250px;
+    max-height: $value * 250/380;
+  }
+
+  &--team {
+    width: 380px;
+    max-width: $value;
+    height: 470px;
+    max-height: $value * 470/380;
+  }
+}
+
+.images-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &--our-work {
+    background-color: $color-lightblack;
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+  }
+
+  &__image {
+    position: relative;
+    background: 50% 50% no-repeat;
+    background-size: cover;
+    transition-duration: 0.5s;
+    @include image-width($image-team-about-width);
+
+    &--about-first {
+      background-image: url("../img/Layer-44.jpg");
+    }
+
+    &--about-second {
+      background-image: url("../img/Layer-39.jpg");
+    }
+
+    &--about-third {
+      background-image: url("../img/Layer-41.jpg");
+    }
+
+    &--team-dix {
+      background-image: url("../img/Layer-16.jpg");
+    }
+
+    &--team-campbell {
+      background-image: url("../img/Layer-19.jpg");
+    }
+
+    &--team-fertig {
+      background-image: url("../img/Layer-18.jpg");
+    }
+
+
+    &--work {
+      width: 50%;
+      height: $our-work-pic-height / 2;
+      flex-grow: 1;
+      flex-basis: 50%;
+    }
+
+    &--work-1 {
+      background-image: url("../img/Layer-26.jpg");
+    }
+
+    &--work-2 {
+      background-image: url("../img/Layer-35.jpg");
+    }
+
+    &--work-3 {
+      background-image: url("../img/Layer-33.jpg");
+    }
+
+    &--work-4 {
+      background-image: url("../img/Layer-29.jpg");
+    }
+
+    &--work-high {
+      height: $our-work-pic-height;
+      flex-basis: 100%;
+      background-image: url("../img/Layer-34.jpg");
+    }
+
+    &--work-5 {
+      background-image: url("../img/Layer-31.jpg");
+    }
+
+    &--work-6 {
+      background-image: url("../img/Layer-32.jpg");
+    }
+
+    &--hover {
+      &:hover .gradient {
+        opacity: 1;
+      }
+    }
+
+    &--hover-shadow:hover {
+      transform: translate(-8px, -8px);
+      box-shadow: 8px 8px 0 0 $color-sky;
+    }
+  }
+
+  &__header {
+    margin: 20px 0 10px;
+    font-family: $bold-family;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    color: $color-black;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    font-family: $roboto-family;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.9375rem;
+    line-height: 0.9375rem;
+    color: $par-color;
+    text-align: center;
+  }
+
+  @media screen and (min-width: $xs) and (max-width: $s - 1) {
+    &__image-container--3 {
+      margin: 30px auto 0;
+    }
+
+    &__image {
+      @include image-width($image-team-about-width-s);
+
+      &--about-third {
+        margin: 30px auto 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: $xs) {
+    justify-content: center;
+
+    &__image-container:not(:last-child){
+      margin-bottom: 30px;
+    }
+
+    &__image {
+      @include image-xs-width($image-team-about-width-xs);
+
+      &--about:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 451px) and (max-width: $m - 1) {
+    &--our-work {
+      flex-direction: column;
+    }
+
+    &__container {
+      width: 100%;
+      height: $our-work-pic-height * 4;
+    }
+
+    &__image {
+      &--work {
+        height: $our-work-pic-height * 2;
+      }
+
+      &__work-high {
+        height: $our-work-pic-height * 4;
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    &--our-work {
+      flex-direction: column;
+    }
+
+    &__container {
+      width: 100%;
+    }
+
+    &__image {
+      &--work {
+        width: 100%;
+        height: $our-work-pic-height * 4;
+      }
+
+      &__work-high {
+        height: $our-work-pic-height * 8;
+      }
+    }
+  }
+}

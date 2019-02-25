@@ -1,0 +1,89 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+* {
+  box-sizing: content-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: darkgray;
+}
+
+.block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+}
+
+.block__check {
+  display: none;
+}
+
+.block__text {
+  position: relative;
+  color: white;
+  font-family: "Roboto Slab", serif;
+  display: block;
+  text-align: right;
+  font-size: 50px;
+  line-height: 30px;
+  width: 100px;
+  margin: 0 auto 50px;
+  cursor: pointer;
+}
+
+.block__text::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 5px;
+  left: -40px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.block__container {
+  width: 900px;
+  font-size: 0;
+}
+
+.block__item {
+  position: relative;
+  display: inline-block;
+  background-color: #000000;
+  width: 50px;
+  height: 50px;
+  border: 1px solid gray;
+  margin: 0 25px 25px 0;
+  transition: background-color 5s, transform 1s, border-radius 1s, border 1s;
+}
+
+.block__item:nth-child(12n) {
+  margin-right: 0;
+}
+
+.block__item:hover {
+  background-color: #ffff00;
+  transition: background-color 0s;
+}
+
+.block__check:checked ~ .block__text:before {
+  background-color: black;
+}
+
+.block__check:checked ~ .block__container > .block__item {
+  border-radius: 50%;
+  background-color: transparent;
+  transform: scale(2);
+  border: 1px solid black;
+  transition: background-color 5s, transform 1s, border-radius 1s, border 1s;
+}
+
+.block__check:checked ~ .block__container > .block__item:hover {
+  background-color: #ffff00;
+  transition: background-color 0s;
+}

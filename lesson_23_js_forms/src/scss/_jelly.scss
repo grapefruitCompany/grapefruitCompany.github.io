@@ -1,0 +1,80 @@
+.jelly {
+  padding-top: 20px;
+
+  &__lbl {
+    position: relative;
+    margin-left: 25px;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      border: 1px solid lightgray;
+      left: -25px;
+      cursor: pointer;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 0;
+      transform: translate(0, -50%);
+      width: 5px;
+      height: 10px;
+      opacity: 0;
+      transform: rotate(45deg) scale (0);
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+      transition: all .3s ease;
+      transition-delay: .15s;
+    }
+  }
+
+  &__check {
+    display: none;
+
+    &:checked ~ .jelly__lbl {
+      &:before {
+        border-color: transparent;
+        background-color: lightblue;
+        animation: jelly .6s ease;
+
+        @keyframes jelly {
+          0% {
+            transform: scale(1, 1);
+          }
+          30% {
+            transform: scale(1.25, 0.75);
+          }
+          40% {
+            transform: scale(0.75, 1.25);
+          }
+          50% {
+            transform: scale(1.15, 0.85);
+          }
+          65% {
+            transform: scale(.95, 1.05);
+          }
+          75% {
+            transform: scale(1.05, .95);
+          }
+          100% { 
+            transform: scale(1, 1);
+          }
+        }
+      }
+
+      &:after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+    }
+  }
+}
+
+
+  

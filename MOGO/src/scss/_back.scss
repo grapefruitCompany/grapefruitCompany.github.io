@@ -1,0 +1,43 @@
+.back {
+  padding: 70px 0;
+
+  &--grey {
+    background-color: $background-grey;
+  }
+
+  &--design {
+    background:
+      linear-gradient(
+          rgba(255, 255, 255, 0.85),
+          rgba(255, 255, 255, 0.85)),
+      url("../img/Layer-45.jpg")
+      50% 50% no-repeat;
+    background-size: cover;
+  }
+
+  &--clients {
+    background:
+      linear-gradient( 
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.85)), 
+      url("../img/Layer-53.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover; 
+  }
+
+  &--pale-blue {
+    padding: 0;
+    background-color: $color-sky;
+  }
+
+  &--nopadding {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width:$xs) {
+  .back--logos {
+    padding: 40px 0;
+  }
+}

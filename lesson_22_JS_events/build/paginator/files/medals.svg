@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d26938;
+      }
+
+      .cls-2 {
+        fill: #b9b9b9;
+      }
+
+      .cls-3 {
+        fill: #f8a407;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="14.5" cy="5.5" r="5.5"/>
+  <circle class="cls-2" cx="5.5" cy="5.5" r="5.5"/>
+  <circle class="cls-3" cx="9.5" cy="12.5" r="5.5"/>
+</svg>

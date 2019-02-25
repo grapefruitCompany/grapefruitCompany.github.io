@@ -1,0 +1,27 @@
+.about {
+  background-color: #f7f7f7;
+  padding: 117px 0 143px;
+  font-size: 0;
+  text-align: center;
+
+  &__block {
+    display: inline-block;
+    max-width: 1082px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    margin: 0 0 36px;
+    padding: 0;
+    @include font($fs * 1.8, $lh * 1.8, bold, #353738);
+
+    @include icon-before('../img/icon-gears.png', 35px, 52px, 43px);
+  }
+
+  &__text {
+    @include font($fs * 1.8, $lh * 3.4, normal, #848789);    
+  }
+}
+

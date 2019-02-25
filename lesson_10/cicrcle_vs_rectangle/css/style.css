@@ -1,0 +1,72 @@
+* {
+  box-sizing:border-box
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  box-shadow: 1px 1px 1px 1px gray;
+  animation: move 4s ease-in-out infinite;
+}
+
+.red {
+  background-color: red;
+
+}
+
+.yellow {
+  background-color: yellow;
+  animation-delay: 1s;
+}
+
+.blue {
+  background-color: blue;
+  animation-delay: 2s;
+}
+
+.gray {
+  background-color: lightgray;
+  animation-delay: 3s;
+}
+
+
+@keyframes move {
+  0% {
+    width: 50px;
+    height: 50px;
+  }
+  25% {
+    border-radius: 50%;
+    transform: translate(150px, 0) scale(2);
+  }
+  50% {
+    border-radius: 0%;
+    transform: translate(150px, 150px) scale(1);
+  }
+  75% {
+    border-radius: 50%;
+    transform: translate(0px, 150px) scale(2);
+  }
+  100% {
+    border-radius: 0%;
+    transform: translate(0px, 0px) scale(1);
+  }
+}

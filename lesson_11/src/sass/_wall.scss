@@ -1,0 +1,50 @@
+.wall {
+  fill: lightgray; 
+  
+  &__text {
+    font-weight: bold;  
+    line-height: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    fill: red;
+    cursor: pointer;
+
+    &--blue {
+      fill: darkblue;
+    }
+  }
+
+  .wall__btn {
+    &:hover > .wall__text {
+      fill: white;
+    }  
+
+    &:hover > .wall__front {
+      x: 5px;
+      width: 190px;
+    }
+  }
+
+  &__back {
+    cursor: pointer;
+    fill: transparent;
+    stroke: red;
+
+    &--blue {
+      stroke: darkblue;
+    }
+  }
+
+  &__front {
+    fill: red;
+    transition: all 1s;
+    
+    &--blue {
+      fill: darkblue;
+    }
+  }
+
+  &--black {
+    fill: black;
+  }
+}

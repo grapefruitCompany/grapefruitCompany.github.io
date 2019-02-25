@@ -1,0 +1,119 @@
+.service {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 1070px) {
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    &:last-child {
+      margin-bottom: 0;      
+    }
+  }
+  
+  &--line {
+    @media screen and (min-width: 1071px) {
+      
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        height: 2px;
+        background-color: $light-gray;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    font-size: 0;
+    display: flex;
+    flex-wrap: nowrap;
+
+    &--margin-bottom {
+      margin-bottom: 100px;
+    }
+
+    @media screen and (max-width: 1070px) {
+      margin-bottom: 50px;
+
+      &:last-child {
+        margin-bottom: 0;        
+      }
+    }
+
+    @media screen and (min-width: 1070px) {
+      max-width: 340px;
+    }
+  }
+
+  &__pic {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    flex-grow: 1;
+    margin-right: 28px;
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+
+      &--photo {
+        background-image: url("../img/svg/ALARM.svg");
+      }
+
+      &--line {
+        background-image: url("../img/svg/LINE-GRAPH.svg");
+      }
+
+      &--computer {
+        background-image: url("../img/svg/COMPUTER-OK.svg");
+      }
+
+      &--book {
+        background-image: url("../img/svg/BOOK-2.svg");
+      }
+
+      &--home {
+        background-image: url("../img/svg/HOME.svg");
+      }
+
+      &--digital {
+        background-image: url("../img/svg/IMAGE.svg");
+      }
+  }
+
+  &__block {
+    flex-grow: 1;
+
+    @media screen and (min-width: 680px) {
+      flex-grow: 3;
+      flex-basis: 280px;
+    }
+
+    @media screen and (max-width: 679px) {
+      flex-grow: 3;
+      flex-basis: 240px;
+    }
+
+  }
+
+  &__title {
+    font-family: $bold-family;
+    font-weight: normal;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: $color-lightblack;
+  }
+
+  &__text {
+    font-family: $roboto-family;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    color: $par-color;
+  }
+}

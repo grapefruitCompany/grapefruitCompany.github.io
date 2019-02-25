@@ -1,0 +1,55 @@
+.js {
+  &__btn--checked {
+    border: 4px solid #a9afb3;
+  }
+
+  @for $i from 0 through 2 {
+    &__slide--#{$i} {
+      transform: translate($i * -100vw);  
+    }
+  }
+
+  &__aside {
+    &--show {
+      right: -50px;
+    }
+
+    &--hide {
+      right: 500px;
+    }
+  }
+
+  &__menu {
+    &--show {
+      transform: translate(0, 0);
+    }
+
+    &--hide {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  &__modal--show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__modal__content--show {
+    bottom: 0;
+    right: 0;
+    transform: rotate(0);
+  }
+
+  &__tabber__btn--current {
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+    color: black;
+  }
+
+  &__tabber__item--current {
+    visibility: visible;
+  }
+}

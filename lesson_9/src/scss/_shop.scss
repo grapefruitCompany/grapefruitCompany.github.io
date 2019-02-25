@@ -1,0 +1,90 @@
+.shop {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 530px;
+
+  @media screen and (max-width: $m) {
+    height: 530px * 2;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: $s) {
+    height: 530px * 3;
+    flex-wrap: wrap;
+  }
+
+  &__block {
+    flex-grow: 2;
+    min-width: 320px;
+    flex-basis: 33.3vw;
+    display: flex;
+    flex-wrap: wrap;  
+    flex-direction: row;
+    
+    @media screen and (max-width: $m) {
+      flex-basis: 100/3*2vw;    
+    }
+
+    @media screen and (max-width: $s) {
+      flex-grow: 2;
+      flex-basis: 100vw;    
+    }
+
+    &--2,
+    &--3 {
+      flex-grow: 1;
+      flex-basis: 16.6vw;
+      min-width: 160px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+      @media screen and (max-width: $m) {
+        flex-basis: 33.3vw;    
+      }
+
+      @media screen and (max-width: $s) {
+        flex-grow: 1;
+        flex-basis: 50vw;    
+      }
+    }
+    
+    &--2 {
+      background-image: url('../img/Layer-22.jpg');
+    }
+
+    &--3 {
+      background-image: url('../img/Layer-25.jpg');
+    }
+  } 
+
+  &__item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--1 {
+      flex-grow: 1;
+      min-width: 160px;
+      background-image: url('../img/Layer-19.jpg');
+    }
+
+    &--2 {
+      flex-grow: 1;
+      min-width: 160px;
+      background-image: url('../img/Layer-21.jpg');
+
+    }
+
+    &--3 {
+      flex-grow: 2;
+      flex-basis: 100%;
+      min-width: 320px;
+      background-image: url('../img/Layer-23.jpg');
+    }
+
+  }
+
+}
+

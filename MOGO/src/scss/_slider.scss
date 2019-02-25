@@ -1,0 +1,137 @@
+.slider {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &__itemSec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+    margin-left: 60px;
+
+    &--border {
+      border: 3px solid $color-sky;
+      padding: 40px;
+    }
+  }
+
+  &__text {
+    font-family: $roboto-family;
+    font-style: italic;
+    font-weight: 100;
+    line-height: 2rem;
+    color: $par-color; 
+  }
+
+  &__content {
+    margin-right: 50px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  &__title {
+    font-family: $italic-family;
+    color: $color-black;
+    position: relative;
+    font-size: 1.5rem;
+    padding-left: 70px;
+    margin-top: 20px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -1px;
+      height: 3px;
+      width: 60px;
+      background: $color-red;
+    }   
+  }
+
+  &__prev {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 18px;
+    transition: 0.6s;
+    left: -10px;
+    color: #999999;
+  }
+
+  &__next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 18px;
+    transition: 0.6s;
+    right: -10px;
+    color: #999999;
+  }
+
+  &__fade {
+    animation-name : fade;
+    animation-duration: 1.5s;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@media screen and (max-width:950px) {
+  .slider {
+    width: 80%;
+    &__image {
+      margin-left: 20px;
+    }
+
+    &__text {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+    }
+    &__content {
+      margin: 0px 20px;
+    }
+  }
+}
+
+@media screen and (max-width:560px) {
+  .slider {
+    &__item {
+      flex-direction: column;
+    }
+    &__itemSec {
+      flex-direction: column;
+    }
+    &__content {
+      margin: 10px 20px;
+    }
+
+    &__image {
+      img {
+      width: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+    &--border {
+      padding: 20px;
+    }
+  }
+}
+}

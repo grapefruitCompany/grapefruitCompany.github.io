@@ -1,0 +1,18 @@
+.celltask {
+  border-collapse: collapse;
+  border: 1px solid black;
+  &__row {
+
+  }
+
+  &__cell {
+    background-color: lightgray; 
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+
+    &--img1 {
+      // background-image: src('img/1.png');
+    }
+  }
+}

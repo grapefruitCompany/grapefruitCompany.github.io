@@ -1,0 +1,13 @@
+.js {
+  &__float-lbl--up {
+    transform: translateY(-10px) scale(0.5);
+  }
+
+  &__input--invalid {
+    border: 2px solid red;
+  }
+
+  &__input--valid {
+    border: 1px solid lightgreen;
+  }
+}

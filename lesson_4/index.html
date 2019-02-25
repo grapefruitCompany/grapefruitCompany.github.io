@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/style.css">
+
+<!--
+Не смог подгрузить шрифт зааный в Фотошопе, он платный. Взял на гугл другой, для примера.
+Не успел понять как поменять шрифт в placeholder
+-->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+	<title>Lesson 4: Form & CSS</title>
+</head>
+<body>
+	<section>
+		<h1><span>Signup</span> Form</h1>
+		
+		<form action="#">
+			<input class="cell name" type="text" placeholder="Fist Name" name="firstName">
+			<input class="cell name" type="text" placeholder="Last Name" name="lastName">
+			<input class="cell login" type="text" placeholder="Username" name="username">
+			<input class="cell" type="email" placeholder="Email Address" name="email">
+			<input class="cell pass" type="password" name="pass" placeholder="Password">
+			<input class="cell check" type="checkbox" id="terms" name="terms" checked required>
+			<label for="terms" class="checkbox">i Agree to the <a class="link" href="#">terms of use</a></label>
+			<div class="footer">
+				<input class="btn" type="submit" value="Sign Up"><br>
+				<span class="last">Have an account with us?	<a class="link" href="#">Login here</a></span><br>
+				<a href="#" class="info">More info about us here...</a>
+
+				<!--
+				для подключения стиля text-overflow: ellipsis;
+				В интернете нашел, что этот стиль работает только когда текст не влазит в блок. Реализовал два варианта. Если хотите посмотреть как работает, то раскоментируйте эту часть и в css:  .moreInfo -  CSS
+				 
+				<br>
+				<p class="moreInfo">More info about us here Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus distinctio quae hic vel vero enim architecto inventore recusandae iusto cum iste illo blanditiis voluptates excepturi fuga sit maxime, fugit quibusdam.</p>
+				-->
+			</div>
+
+		</form>
+	</section>
+</body>
+</html>

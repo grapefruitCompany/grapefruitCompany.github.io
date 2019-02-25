@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#" method="post" class="info js__form" novalidate>
+    <fieldset class="info__block">
+      <legend class="info__title">Contact</legend>
+      <div class="info__group">
+        <input type="text" name="firstName" id="firstName" class="info__field  js__float-input"  autocorrect="off" autocomplete="name" minlength="3" maxlength="15" required>  
+        <label for="firstName" class="info__name js__float-lbl">First Name</label>
+      </div>
+      <div class="info__group">
+        <input type="text" name="lastName" id="lastName" class="info__field  js__float-input" autocorrect="off" autocomplete="name">
+        <label for="lastName" class="info__name js__float-lbl">Last Name</label>  
+      </div>
+      <div class="info__group">
+        <input type="tel" name="phone" id="phone" class="info__field js__float-input" autocomplete="tel" autocorrect="off" required>
+        <label for="phone" class="info__name js__float-lbl">Phone</label>  
+      </div>
+      <div class="info__group" >
+        <input type="email" name="email" id="email" class="info__field js__float-input" autocorrect="off" autocomplete="email" autocapitalize="off">
+        <label for="email" class="info__name js__float-lbl">Email</label>  
+      </div>            
+    </fieldset>
+
+    <fieldset class="info__block">
+      <legend class="info__title">Shipping</legend>
+        <label for="addres" class="info__name info__name--up">Address</label>
+        <input type="text" id="addres" name="addres" class="info__cell" autocorrect="off" minlength="3" maxlength="30" required>
+        <label for="city" class="info__name info__name--up">City</label>
+        <input type="text" id="city" name="city" class="info__cell" autocorrect="off" autocomplete="address-level2" required minlength="3" maxlength="30">  
+        <label for="state" class="info__name info__name--up">State</label>
+        <input type="text" id="state" name="state" class="info__cell" autocorrect="off" required minlength="3" maxlength="30"> 
+        <label for="zip" class="info__name info__name--up">Zip</label>
+        <input type="text" id="zip" name="zip" class="info__cell" autocorrect="off" autocomplete="postal-code" required minlength="3" maxlength="30">
+        <label for="country" class="info__name info__name--up">Country</label>
+        <input type="text" id="country" name="country" class="info__cell" autocorrect="off" autocomplete="country" required minlength="3" maxlength="30">
+        <div class="jelly">
+          <input type="checkbox" id="billTo" name="billTo" class="jelly__check" required>
+          <label for="billTo" class="jelly__lbl">Bill to this address</label>
+        </div>            
+    </fieldset>
+
+
+    <fieldset class="info__block">
+      <legend class="info__title">Payment</legend>
+        <label for="cardName" class="info__name info__name--up">Name on card</label>
+        <input type="text" id="cardName" name="cardName" class="info__cell" placeholder="Full Name" autocomplete="off" autocorrect="off" required minlength="3" maxlength="30">
+        <label for="cardNumber" class="info__name info__name--up">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber" class="info__cell" autocorrect="off" autocomplete="off" required minlength="16" maxlength="16">  
+        <label for="cardCvc" class="info__name info__name--up">CVC</label>
+        <input type="text" id="cardCvc" name="cardCvc" class="info__cell" autocorrect="off" autocomplete="off" required minlength="3" maxlength="4">
+        <label for="cardExpiry" class="info__name info__name--up">Expiry</label>
+        <input type="date" id="cardExpiry" name="cardExpiry" class="info__cell info__cell--mb20" autocomplete="off" autocorrect="off" required>
+        <button type="reset" class="info__btn info__btn--red info__btn--mb20 info__btn--mr5">
+          <span class="info__side info__side--cross">Cancel</span>
+        </button>
+        <button type="submit" class="info__btn">
+          <span class="info__side info__side--arrow">Check out &#8594;</span>
+        </button>            
+    </fieldset>
+
+  </form>
+
+  <script src="js/float.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>

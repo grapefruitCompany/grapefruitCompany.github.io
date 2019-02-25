@@ -1,0 +1,55 @@
+.menu {
+  display: flex;
+  list-style-type: none;
+  float: right;
+
+  &__icon {
+    display: flex;
+  }
+  &__item {
+    margin-right: 30px;
+
+    & li:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $color-white;
+    text-decoration: none;
+    font-family: $bold-family;
+    font-size: 0.7rem;
+    border-bottom: 2px solid rgba(252,227,138,0);
+    padding-bottom: 5px;
+    transition: 1.5s;
+
+    &:hover {
+      color: $color-yellow;
+      border-bottom: 2px solid $color-yellow;
+      transition: 1s;
+    }
+    &--icon:hover {
+      border-color: rgba(252,227,138,0);
+    }
+  }
+}
+
+
+@media screen and (max-width: 830px) {
+  .menu {
+    justify-content: center;
+    float: none;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .menu {
+    &__item {
+    margin-right: 10px;
+    }
+
+    &__link {
+      font-size: 0.6rem;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= "Lesson 12: Pug"
+    link(href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400" rel="stylesheet")
+    link(href="css/style.css" rel="stylesheet")
+  body
+    - var checkStatus=false
+    - var status=checkStatus ? 'login': 'logout'
+    div.center
+      svg.center__close(viewBox="0 0 50 50" height="15")
+       line(x1="5" y1="5" x2="45" y2="45" stroke-width="10")
+       line(x1="45" y1="5" x2="5" y2="45" stroke-width="10")
+      ul.center__list
+        each val, index in ['home', 'about', 'work', 'services', 'team', 'contact', status]
+          li.center__item
+            a.center__link(href='/' + val)= val
+      div.center__contacts
+        p.center__tel-mail (912)555-1234
+        p.center__tel-mail office@website.com
+        mixin icons(name, target)
+         a(class="center__icons center__icons--"+name href=target)
+        +icons("fb", "#")
+        +icons("tw", "#")
+        +icons("gl", "#")

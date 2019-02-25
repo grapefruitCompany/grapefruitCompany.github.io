@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <title>SVG</title>
+</head>
+<body>
+  
+
+
+<!-- Create a line, width 300px, 1px height green color -->
+  <div>
+    <svg viewBox="0 0 300 100" width="300" height="100">
+      <line x1="0" y1="50" x2="300" y2="50" stroke="green" stroke-width="1"></line>
+    </svg>  
+  </div>
+<!-- Create a blue circle, 250 х 250 with a border: 1px solid -->
+  <div>
+    <svg viewBox="0 0 250 250" width="250" height="250">
+      <circle r="125"
+        cx="125" cy="125"
+        fill="blue" stroke="black" stroke-width="1">
+      </circle>
+    </svg>  
+  </div>
+<!-- Create a cross 300 х 300 using lines (black) red, stroke width: 3px -->
+  <div>
+    <svg viewBox="0 0 300 300" width="300" height="300">
+      <line class="cross" x1="0" y1="0" x2="300" y2="300"></line>
+      <line class="cross" x1="300" y1="0" x2="0" y2="300"></line>
+    </svg>  
+  </div>
+<!-- Create a transparent elips 400 х 200 with yellow dashed border with 4 px with of every dash -->
+  <div>
+    <svg viewBox="0 0 400 200" width="400" height="200">
+      <ellipse rx="190" ry="90"
+        cx="200" cy="100"
+        fill-opacity="0" stroke="orange" stroke-width="5" stroke-dasharray="4" />
+    </svg>  
+  </div>
+<!-- Download some svg from internet, and add it with 3 different ways: by svg tag, -->
+  <div>
+    <svg x="0px" y="0px"
+       viewBox="0 0 200 200" 
+       width="400" height="400">
+    <style type="text/css">
+      .st0{fill:#39B54A;}
+    </style>
+    <path class="st0" d="M100,0C44.77,0,0,44.77,0,100c0,55.23,44.77,100,100,100s100-44.77,100-100C200,44.77,155.23,0,100,0z
+       M146.19,163.57L100,139.29l-46.19,24.28l8.82-51.43L25.27,75.72l51.64-7.5L100,21.42l23.09,46.79l51.64,7.5l-37.37,36.42
+      L146.19,163.57z"/>
+    </svg>
+  </div>
+<!-- Download some svg from internet, and add it with 3 different ways: by object -->
+  <div>
+    <object data="img/circle-star.svg" type="image/svg+xml">
+    </object>
+  </div>
+<!-- Download some svg from internet, and add it with 3 different ways: BASE.64 -->
+  <div class="circle-star">
+    
+  </div>
+
+  <div>
+    <svg class="loader" viewBox="0 0 250 250" width="250" height="250">
+      <circle r="100"
+        cx="125" cy="125"
+        fill-opacity="0" stroke="black" stroke-width="5" stroke-dasharray="150"
+        stroke-linecap="round">
+      </circle>
+    </svg>  
+  </div>
+<!-- Responsive SVG -->
+
+<div>
+  <svg class="responsive">  
+    <clipPath id="circle">
+      <rect width="100%" height="100%"></rect>            
+    </clipPath>  
+    <image width="100%" height="100%" xlink:href="img/show_art_futurama.jpg" clip-path="url(#circle)"></image>  
+  </svg>
+</div>
+  
+
+<!-- Animated buttons-->
+  <div>
+    <svg class="wall" viewBox="0 0 600 150" width="600" height="150">
+      <rect x="0" y="0" width="600" height="150" />
+
+      <svg  x="200" y="50" class="wall__btn" viewBox="0 0 200 50" width="200" height="50">
+        <rect class="wall__back" width="190" height="40" x="5" y="5" stroke-width="5" />
+        <rect class="wall__front" width="0" height="40" x="95" y="5"/>
+        <text class="wall__text" x="40" y="30">CONTINUE</text>
+      </svg>
+
+    </svg>
+  </div>
+
+  <div>
+    <svg class="wall wall--black" viewBox="0 0 600 150" width="600" height="150">
+      <rect x="0" y="0" width="600" height="150" />
+
+      <svg  x="200" y="50" class="wall__btn" viewBox="0 0 200 50" width="200" height="50">
+        <rect class="wall__back wall__back--blue" width="190" height="40" x="5" y="5" stroke-width="5" />
+        <rect class="wall__front wall__front--blue" width="0" height="40" x="95" y="5"/>
+        <text class="wall__text wall__text--blue" x="40" y="30">CONTINUE</text>
+      </svg>
+
+    </svg>
+  </div>
+
+<!-- Hamburger menu  -->
+
+  <div>
+    <svg class="wall wall--black" viewBox="0 0 600 600" width="600" height="600">
+      <rect x="0" y="0" width="600" height="600" />
+
+      <svg  x="150" y="150" class="menu" viewBox="0 0 300 300" width="300" height="300">
+        <line class="menu__line menu__line--down" x1="100" y1="100" x2="200" y2="100"></line>       
+        <line class="menu__line menu__line--cross-left" x1="100" y1="150" x2="200" y2="150"></line>
+        <line class="menu__line menu__line--cross-right" x1="100" y1="150" x2="200" y2="150"></line>
+        <line class="menu__line menu__line--up" x1="100" y1="200" x2="200" y2="200"></line>
+      </svg>
+
+    </svg>
+  </div>
+
+</body>
+</html>

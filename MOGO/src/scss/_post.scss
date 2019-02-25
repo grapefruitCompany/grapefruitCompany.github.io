@@ -1,0 +1,134 @@
+.post {
+  // padding: 45px 10px 0 20px;
+  font-size: 0;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+  @media screen and (min-width: $l) {
+    justify-content: space-between;
+  }
+
+  &__item {
+    display: inline-block;
+    width: 290px;
+    text-align: left;
+    padding: 0 10px;
+
+    box-sizing: content-box;
+
+    @media screen and (min-width: $xs*0.7) {
+      width: 340px;
+    }
+
+    @media screen and (max-width: $l) {
+      margin-bottom: 50px;
+
+      &:last-child {
+        margin-bottom: 0;  
+      }
+    }
+  }
+
+  &__pic {
+    position: relative;
+    width: 290px;
+    height: 240px;
+    margin-bottom: 15px;
+    background-image: url("../img/Layer-54.jpg");
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media screen and (min-width: $xs*0.7) {
+      width: 340px;
+    }
+
+    &--laptop {
+      background-image: url("../img/Layer-55.jpg");
+      background-position: center;
+    }
+
+    &--tablet {
+      background-image: url("../img/Layer-57.jpg"); 
+      background-position: center;
+    }
+  }
+
+  &__block {
+    position: absolute;
+    padding: 15px 0;
+    bottom: 10px;
+    left: -10px;
+    width: 60px;
+    height: 70px;
+    text-align: center;
+  }
+
+  &__date {
+    font-family: $bold-family;
+    font-weight: bold;
+    font-size: 1.875rem;
+    line-height: 1.875rem;
+    color: $color-white;
+  }
+
+  &__month {
+    font-family: $roboto-family;
+    font-size: 0.93rem;
+    line-height: 0.93rem;
+    color: $color-white;
+  }
+
+  &__title {
+    font-family: $bold-family;
+    color: $color-lightblack;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    display: block;
+    text-decoration: none;
+    color: $par-color;
+    font-family: $roboto-family;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__sub {
+    display: inline-block;
+    padding-left: 25px;
+    margin-right: 20px;
+    background-size: 10 20;
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+
+    font-family: $roboto-family;
+    color: $par-color;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+
+    &--views {
+      background-image: url("../img/svg/VIEW.svg");
+    }
+
+    &--comments {
+      background-image: url("../img/svg/SPEECH-BUBBLE-2.svg");
+    }    
+  }
+
+
+}

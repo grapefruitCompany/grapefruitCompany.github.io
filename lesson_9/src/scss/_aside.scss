@@ -1,0 +1,109 @@
+.aside {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    position: relative;
+    padding: 70px 65px 100px;
+    background-color: #fff;
+    z-index: 2;
+    height: 400px;
+    transition-duration: 1s;   
+    cursor: pointer; 
+    text-align: center;
+
+    
+    @media screen and (max-width: $xs) {
+      padding: 35px 30px 50px;
+
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(132,135,137, 0.5);
+      width: 50px;
+      height: 1px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 999;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 20px solid transparent;
+      border-top: 20px solid white;
+    }
+
+    &:hover {
+      height: 600px;
+      
+      &::after {
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+
+    @include font($fs * 1.8, $lh * 1.8, bold, #353738);
+
+    @media screen and (max-width: $xs) {
+      @include font($fs * 1.4, $lh * 1.4, bold, #353738); 
+    }
+
+    &--frame {
+      @include icon-before('../img/icon-frame.png', 25px, 41px, 30px);      
+    }
+
+    &--circle {
+      @include icon-before('../img/icon-circle.png', 25px, 32px, 32px);      
+    }
+
+    &--leg {
+      @include icon-before('../img/icon-leg.png', 25px, 23px, 41px);      
+    }
+  }
+
+  &__text {
+    text-align: justify;
+    height: 70%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @include font($fs * 1.8, $lh * 3, normal, #848789); 
+
+    @media screen and (max-width: $xs) {
+      @include font($fs*1.2, $lh * 2, normal, #848789);
+      height: 100%;
+    }
+  }
+
+  &__footer {
+    flex-grow: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &--layer11 {
+      background-image: url('../img/Layer-11.jpg');
+    }
+
+    &--layer13 {
+      background-image: url('../img/Layer-13.jpg');
+    }
+
+    &--layer16 {
+      background-image: url('../img/Layer-16.jpg');
+    }
+  }
+}

@@ -1,0 +1,76 @@
+.h-icon, .h-icon-1, .h-icon-2, .f-icon-1, .f-icon-2, .f-icon, .social-icon-1, .social-icon-2, .social-icon-3, .social-icon-4, .social-icon-5, .social-icon{
+	background: url(sprites.png) no-repeat;
+}
+
+.h-icon{
+	background-position: 0 0;
+	width: 21px;
+	height: 26px;
+}
+
+.h-icon-1{
+	background-position: -46px -3px ;
+	width: 23px;
+	height: 25px;
+}
+
+.h-icon-2{
+	background-position: -98px -3px ;
+	width: 26px;
+	height: 25px;
+}
+
+.f-icon-1{
+	background-position: -37px -89px ;
+	width: 48px;
+	height: 48px;
+}
+
+.f-icon-2{
+	background-position: -189px -88px ;
+	width: 47px;
+	height: 47px;
+}
+
+.f-icon{
+	background-position: -338px -92px ;
+	width: 43px;
+	height: 43px;
+}
+
+.social-icon-1{
+	background-position: -54px -211px ;
+	width: 9px;
+	height: 17px;
+}
+
+.social-icon-2{
+	background-position: -104px -208px ;
+	width: 20px;
+	height: 20px;
+}
+
+.social-icon-3{
+	background-position: -242px -199px ;
+	width: 34px;
+	height: 34px;
+}
+
+.social-icon-4{
+	background-position: -2px -209px ;
+	width: 15px;
+	height: 15px;
+}
+
+.social-icon-5{
+	background-position: -203px -206px ;
+	width: 18px;
+	height: 22px;
+}
+
+.social-icon{
+	background-position: -152px -210px ;
+	width: 17px;
+	height: 13px;
+}
+

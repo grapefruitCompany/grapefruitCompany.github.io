@@ -1,0 +1,43 @@
+.tabber {
+  padding: 100px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__slides {
+    border-top: 1px solid gray;
+    min-width: 500px;
+    position: relative;
+  }
+
+  &__item {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  &__btn {
+    position: absolute;
+    top: -30px;
+    padding: 5px 10px;
+    color: blue;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover {
+      border-top: 1px solid lightgray;
+      border-left: 1px solid lightgray;
+      border-right: 1px solid lightgray;
+      border-radius: 5px 5px 0 0;
+    }
+
+    &--2 {
+      left: 40px;
+    }
+
+    &--3 {
+      left: 80px;
+    }
+  }
+}

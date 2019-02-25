@@ -1,0 +1,85 @@
+.footer {
+  background-color: #f7f7f7;
+  padding: 100px 50px;
+
+  &__wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0;
+
+    @media screen and (max-width: $s) {
+      flex-direction: column;
+    }
+  }
+  
+  &__item {
+    font-size: 0;
+    margin: 0;
+
+    @media screen and (max-width: $s) {
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    &:last-child {
+      margin-right: 60px; 
+
+      @media screen and (max-width: $s) {
+        margin-bottom: 0;
+        text-align: center;
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+    text-transform: capitalize;
+    font-style: italic;
+
+    @include font($fs*1.4, $lh*1.8, normal, #848789);
+
+    &--first-row {
+      font-style: normal;
+      @include font($fs*1.6, $lh*1.8, bold, #848789);
+    }
+
+    &--yebo::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -70%;
+      width: 55px;
+      height: 36px;
+      background-image: url('../img/logo-yebo.png');
+      background-position: center;
+      background-repeat: no-repeat; 
+    } 
+  }
+
+  &__social {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    &--tw {
+      background-image: url('../img/icon-tw.png');
+    }
+
+    &--fb {
+      background-image: url('../img/icon-fb.png');
+    }
+
+    &--pt {
+      background-image: url('../img/icon-pt.png');
+    }
+  }
+
+
+}

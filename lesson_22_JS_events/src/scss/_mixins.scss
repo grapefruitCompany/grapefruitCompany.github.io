@@ -1,0 +1,25 @@
+@mixin font($size, $height, $weight, $color) {
+    font-family: "Lato", sans-serif;
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+    color: $color;
+}
+
+@mixin icon-before($url, $mb, $w, $h) {
+  &::before {
+    content: "";
+    display: block;
+    margin: 0 auto $mb;
+    background-image: url($url);
+    width: $w;
+    height: $h; 
+  } 
+}
+
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

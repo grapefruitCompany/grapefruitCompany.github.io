@@ -1,0 +1,130 @@
+.img-1, .img-2, .img-3, .img-4, .img-5, .img-6, .img-7, .img-8, .img-9, .img-10, .img-11, .img-12, .img-13, .img-14, .img-15, .img-16, .img-17, .img-18, .img-19, .img-20, .img{
+	background: url(sprites.png) no-repeat;
+}
+
+.img-1{
+	background-position: -50px 0;
+	width: 50px;
+	height: 50px;
+}
+
+.img-2{
+	background-position: -103px -1px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-3{
+	background-position: -157px -1px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-4{
+	background-position: -210px -2px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-5{
+	background-position: -263px -2px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-6{
+	background-position: -316px -2px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-7{
+	background-position: -369px -3px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-8{
+	background-position: -476px -2px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-9{
+	background-position: -529px -3px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-10{
+	background-position: 0 -56px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-11{
+	background-position: -53px -56px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-12{
+	background-position: -106px -58px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-13{
+	background-position: -160px -58px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-14{
+	background-position: -213px -57px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-15{
+	background-position: -267px -57px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-16{
+	background-position: -320px -57px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-17{
+	background-position: -375px -57px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-18{
+	background-position: -429px -56px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-19{
+	background-position: -422px -3px ;
+	width: 50px;
+	height: 50px;
+}
+
+.img-20{
+	background-position: -485px -55px ;
+	width: 43px;
+	height: 50px;
+}
+
+.img{
+	background-position: -4px 0;
+	width: 44px;
+	height: 50px;
+}
+

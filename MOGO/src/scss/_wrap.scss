@@ -1,0 +1,31 @@
+.wrap {
+  margin: 0 auto;
+  padding: 115px 0;
+  width: calc(100% - 50px);
+  max-width: 1200px;
+
+  &--no-margin {
+    margin: 0;
+  }
+
+  &--padding80 {
+    padding: 80px 0 0;
+  }
+
+  @media screen and (min-width: $xs) and (max-width: $m - 1) {
+    padding: 80px 0;
+  }
+
+  @media screen and (max-width: $xs - 1) {
+    padding: 60px 0;
+    width: calc(100% - 20px);
+  }
+
+  &--no-bottom-padding {
+    padding-bottom: 0;
+  }
+
+  &--no-padding {
+    padding: 0;
+  }
+}

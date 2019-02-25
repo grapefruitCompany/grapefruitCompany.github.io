@@ -1,0 +1,83 @@
+.buttons {
+  padding: 75px 0;
+  margin: 0;
+  font-size: 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: #282f35;
+
+  @media screen and (max-width: $m) {
+    justify-content: space-between;
+    padding: 75px 75px;
+  }
+
+  @media screen and (max-width: $s) {
+    flex-direction: column;
+    padding: 50px 75px;
+  }
+
+  @media screen and (max-width: $xs) {
+    padding: 50px 50px;
+  }
+
+  &__item {
+    display: inline-block;
+    padding: 0 100px;
+    height: 50px;
+    background-color: transparent;
+    transition: all .5s;
+    border: 1px solid #64c29e;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include font($fs*1.4, $lh*5, 900, #64c29e); 
+
+    @media screen and (max-width: $m) {
+      margin-bottom: 50px;
+    } 
+
+    @media screen and (max-width: $s) {
+      margin-bottom: 50px;
+      flex-grow: 1;
+
+      &:last-child {
+        margin-bottom: 0;        
+      }
+    }
+
+    @media screen and (max-width: $xs) {
+      padding: 0 25px;
+    }
+
+    &--white {
+      border: 1px solid #ffffff;
+      transition: all .5s;
+
+      @include font($fs*1.4, $lh*5, 900, #ffffff);
+
+      @media screen and (max-width: $m) {
+        flex-grow: 1;
+        order: 1;
+        margin-bottom: 0; 
+      }
+
+      @media screen and (max-width: $s) {
+        order: 0;
+        margin-bottom: 50px;        
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, .25);  
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgba(100, 194, 158, .25);
+    }
+  }
+}

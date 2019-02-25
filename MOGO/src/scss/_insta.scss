@@ -1,0 +1,88 @@
+.insta {
+  
+  &__tittle {
+    font-family: $bold-family;
+    font-weight: normal;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: $color-lightblack;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 88px 88px 88px; 
+    grid-template-rows: 88px 88px 88px;
+    grid-template-areas: 
+    "view couple road"
+    "nigt wood mount"
+    "tunnel snail see"
+    ;
+    grid-gap: 2px 2px;
+    margin-bottom: 18px;
+
+    @media screen and (max-width: $xs) {
+      grid-template-columns: repeat(3, 100px); 
+      grid-template-rows: repeat(3, 100px);
+      grid-gap: 0;
+    } 
+  }
+
+  &__pic {
+    width: 88px;
+    height: 88px;
+
+    @media screen and (max-width: $xs) {
+      width: 100px;
+      height: 100px;
+    }
+
+    &--view {
+      grid-area: view;
+    }
+
+    &--couple {
+      grid-area: couple;
+    }
+
+    &--road {
+      grid-area: road;
+    }
+
+    &--nigt {
+      grid-area: nigt;
+    }
+
+    &--wood {
+      grid-area: wood;
+    }
+
+    &--mount {
+      grid-area: mount;
+    }
+
+    &--tunnel {
+      grid-area: tunnel;
+    }
+
+    &--snail {
+      grid-area: snail;
+    }
+
+    &--see {
+      grid-area: see;
+    }
+  }
+
+  &__link {
+    font-family: $roboto-family;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 14px;
+    text-decoration: none;
+    color: $color-lightblack;
+  }
+
+}

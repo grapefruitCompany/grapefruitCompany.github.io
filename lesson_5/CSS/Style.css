@@ -1,0 +1,241 @@
+.block {
+            margin-bottom: 10px;
+        }
+
+        .block > div:not(.clearfix) {
+            background: #00BCD4;
+            border: 1px solid #fff;
+            height: 150px;
+            color: #fff;
+            display: block;
+            width: 100%;
+        }
+
+        .clearfix {
+            width: 100%;
+            float: none;
+            position: relative;
+        }
+
+        .clearfix:after {
+            height: 1px;
+            width: 100%;
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+        .inside {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .text {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+        }
+
+* {
+    box-sizing: border-box;
+}
+
+/*From large Desktop
+
+1 block -> 4 elements in a row: all equal width
+2 block -> 2 elements in a row: all equal width
+3 block -> 3 elements in a row: 1 -> 50%, 2 and 3 -> 25%
+4 block -> 3 elements in a row: 1 -> 25%, 2 -> 25% and 3 ->50%
+5 block -> 5 elements in a row: all equal width*/
+
+@media (min-width: 1801px) {
+
+    .first.block .plain {
+        width: 25%;
+        float: left;
+    }
+
+    .second.block .colored {
+        width: 50%;
+        float: left;
+    }
+    
+    .third.block .colored:first-child {
+        width: 50%;
+    }
+
+    .third.block .colored {
+        width: 25%;
+        display: inline-block;
+        margin-right: -5px;
+    }
+
+    .fourth.block .colored {
+        width: 25%;
+        display: inline-block;
+        margin-right: -5px;
+    }
+
+    .fourth.block .colored:nth-child(3) {
+        width: 50%;
+    }
+
+    .fifth.block .colored{
+        width: 20%;
+        display: inline-block;
+        margin-right: -5px;
+    }
+
+}
+
+/*From medium desktop to large desktop
+
+1 block -> 2 elements in a row: all equal width, so it will have 2 rows width: 50%
+2 block -> 2 elements in a row: all equal width
+3 block -> 3 elements: 1 -> 50%, 2 -> 50% and last 100%
+4 block -> 3 elements in a row: 1 -> 35%, 2 -> 30% and 3 ->35%
+5 block -> 3 or 2 elements in a row, all 33% width, centered in center of parent block*/
+
+@media (min-width: 1201px) and (max-width: 1800px) {
+    .first.block .colored:nth-child(2n+1),
+    .second.block .colored:nth-child(1) {
+        width: 50%;
+        float: left;
+        display: block;
+    }
+    .third.block .colored:nth-child(1),
+    .third.block .colored:nth-child(2) {
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .fourth.block .colored:nth-child(2n+1){
+        width: 35%;
+        margin-right: -5px;
+        display: inline-block;    
+    }
+
+    .fourth.block .colored:nth-child(2){
+        width: 30%;
+        margin-right: -5px;
+        display: inline-block;
+    }
+
+    .fifth.block,
+    .fourth.block {
+        text-align: center;
+    }
+
+    .fifth.block .colored {
+        width: 33%;
+        margin-right: -5px; 
+        display: inline-block;
+    }
+}
+
+/*From Tablet Landscape to medium desktop
+
+1 block -> 2 elements in a row: all equal width, so it will have 2 rows width: 50%
+2 block -> 2 elements in a row: all equal width
+3 block -> 3 elements in a row: all equal width
+4 block -> 3 elements in a row: 1 -> 35%, 2 -> 30% and 3 ->35%
+5 block -> 2 elements in a row, all equal width, the last one should be 100% width*/
+
+@media (min-width: 961px) and (max-width: 1200px) {
+    .first.block div:nth-child(2n+1),
+    .second.block div:nth-child(1) {
+        width: 50%;
+        float: left;
+        display: block;
+    }
+    .third.block .colored {
+        width: calc(100%/3);
+        margin-right: -5px;
+        display: inline-block;
+    }
+
+    .fourth.block .colored:nth-child(2n+1){
+        width: 35%;
+        margin-right: -5px;
+        display: inline-block;    
+    }
+
+    .fourth.block .colored:nth-child(2){
+        width: 30%;
+        margin-right: -5px;
+        display: inline-block;
+    }
+
+    .fourth.block {
+        text-align: center;
+    }
+
+    .fifth.block .colored {
+        width: 50%;
+        margin-right: -5px; 
+        display: inline-block;
+    }
+
+    .fifth.block .colored:nth-child(5) {
+        width: 100%;
+        margin-right: -5px; 
+        display: inline-block;
+    }    
+}
+
+/*From Tablet Portrait to Tablet Landscape
+
+1 block -> all elements width: 50%
+2 block -> all elements width: 50%
+3 block -> 1 element in a row, full width
+4 block -> 1 and second: 50% and last element 100% width
+5 block -> 2 elements in a row, 50% width, last one is 100% width*/
+
+@media (min-width: 769px) and (max-width: 960px) {
+    .first.block .colored,
+    .second.block .colored {
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+        }
+    
+    .fourth.block .colored:nth-child(1),
+    .fourth.block .colored:nth-child(2) {
+        width: 50%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .fifth.block .colored {
+        width: 50%;
+        margin-right: -5px; 
+        display: inline-block;
+    }
+
+    .fifth.block .colored:nth-child(5) {
+        width: 100%;
+        margin-right: -5px; 
+        display: inline-block;
+    }  
+}
+
+/*From Mobile to Tablet Portrait
+
+1 block -> all elements width: 50%
+2 block -> all elements width: 50%
+3 block -> 1 element in a row, full width 100% for all
+4 block -> 1 element in a row, full width 100% for all
+5 block -> all elements in 100% width*/
+
+@media (min-width: 321px) and (max-width: 768px) {
+    .first.block .colored,
+    .second.block .colored {
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+        }
+}

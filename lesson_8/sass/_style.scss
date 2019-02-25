@@ -1,0 +1,79 @@
+// 3. Подключить Шрифты отдельным файлом
+
+
+.block {
+  @include center;
+  width: $blockSize*12+$blockSize/2*12;
+
+  &__check {
+    display: none;
+  }
+
+  &__text{
+    position: relative;
+    color: white;
+    font-family: $roboto-slab;
+    display: block;
+    text-align: right;
+    font-size: 50px;
+    line-height: 30px;
+    width: 100px;
+    margin: 0 auto $blockSize;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 5px;
+      left: -40px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 1px solid black;
+    }
+  }
+
+  &__container {
+    font-size: 0;  
+  }
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    background-color: $bgc_item;
+    width: $blockSize;
+    height: $blockSize;
+    border: $border;
+    margin: 0 $blockSize/2 $blockSize/2 0;
+
+  @include transition($bgc_time, 1s);
+
+    &:nth-child(12n) {
+      margin-right: 0;
+    }
+
+  @include hover
+  }
+
+  &__check:checked ~ .block {
+  
+    &__text:before {
+      background-color: black;
+    }
+
+    &__container>.block__item {
+      border-radius: 50%;
+      background-color: transparent;
+      transform: scale(2);
+      border: 1px solid black;
+
+    @include transition($bgc-time, 1s);
+
+    @include hover
+    }
+  }
+}
+
+
+  

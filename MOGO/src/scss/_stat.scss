@@ -1,0 +1,52 @@
+.stat {
+  display: flex;
+  justify-content: center;
+  
+  &__item {
+    padding: 90px 0;
+    width: 240px;
+    border-left: 1px solid rgba(255,255,255,0.35);  
+    text-align: center;
+
+    &:last-child {
+      border-right: 1px solid rgba(255,255,255,0.35);
+    }
+    
+    @media screen and (max-width: $m) {
+      padding: 45px 0;
+    }
+
+    @media screen and (max-width: $xs) {
+      padding: 20px 0;
+    }
+  }
+  
+   &__number {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    font-family: $bold-family;
+    font-weight: bold;
+    color: $color-white;
+     @media screen and (max-width: $s) {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+    }
+     @media screen and (max-width: $xs) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+  
+  &__text {
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    font-family: $bold-family;
+    text-transform: uppercase;
+    color: $color-white;
+    
+    @media screen and (max-width: $xs) {
+      font-size: 0.70rem;
+      line-height: 0.70rem;
+    }     
+  }
+} 

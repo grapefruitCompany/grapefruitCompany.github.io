@@ -1,0 +1,31 @@
+@mixin proportions ($tablet-width) {
+  width: $tablet-width;
+  height: $tablet-width * 583/479;
+
+  &::after {
+    right: -($tablet-width * 135/479);
+    bottom: -($tablet-width * 70/479);
+    width: $tablet-width * 274/479;
+    height: $tablet-width * 476/479;
+  }
+}
+
+.tablet-design {
+  position: relative;
+  margin: 0 auto;
+  left: -30px;
+  background: url("../img/png/tablet.png") 50% 50% no-repeat;
+  background-size: cover;
+  @include proportions($tablet-width);
+
+  &::after {
+    position: absolute;
+    content: "";
+    background: url("../img/png/iphone.png") 50% 50% no-repeat;
+    background-size: cover;
+  }
+
+  @media screen and (max-width: $s - 1) {
+    @include proportions($tablet-width-s);
+  }
+}

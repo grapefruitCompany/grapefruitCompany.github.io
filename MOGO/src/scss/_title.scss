@@ -1,0 +1,64 @@
+.title {
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center;
+
+  &__italic {
+    font-family: $italic-family;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    color: $color-black;
+    text-transform: capitalize;
+  }
+
+  &__bold {
+    position: relative;
+    margin: 20px 0 84px;
+    font-family: $bold-family;
+    font-size: 1.875rem;
+    line-height: 1.875rem;
+    text-transform: uppercase;
+    color: $color-black;
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: 50%;
+      bottom: -40px;
+      transform: translate(-50%, -2px);
+      width: 60px;
+      height: 3px;
+      background-color: $color-red;
+    }
+  }
+
+  &__text {
+    padding-bottom: 90px;
+    font-family: $roboto-family;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    color: $par-color;
+
+    &--zero-padding {
+      padding-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: $xs - 1) {
+    &__bold {
+      margin-bottom: 60px;
+
+      &::after {
+        bottom: -32px;
+      }
+    }
+
+    &__text {
+      padding-bottom: 60px;
+
+      &--zero-padding {
+        padding-bottom: 0;
+      }
+    }
+  }
+}

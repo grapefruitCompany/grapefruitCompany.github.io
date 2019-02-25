@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100px;
+  height: 100px;
+
+}
+
+.sub-container {
+  width: 100px;
+  height: 100px;
+
+  transform-origin: 50% 50%; 
+
+  animation-name: dance;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.rect {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  border: 5px solid black;
+
+  transform: rotate(-45deg);
+  transform-origin: 50% 50%;
+
+}
+
+@keyframes dance {
+  50% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+.blue {
+  animation-name: blue;
+
+}
+
+.pink {
+  animation-name: pink;
+}
+
+.yellow {
+  animation-name: yellow;
+}
+
+.red {
+  animation-name: red;
+}
+
+
+@keyframes blue {
+  0% {
+    top: 0;
+    right: 0;
+  }
+  50% {
+    top: -71px;
+    right:-71px;
+    border: 5px solid blue;
+  }
+  100% {
+    top: 0;
+    right: 0;
+  }
+}
+
+@keyframes pink {
+  0% {
+    bottom: 0;
+    right: 0;
+  }
+  50% {
+    bottom: -71px;
+    right:-71px;
+    border: 5px solid pink;
+  }
+  100% {
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@keyframes yellow {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    top: -71px;
+    left:-71px;
+    border: 5px solid yellow;
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes red {
+  0% {
+    bottom: 0;
+    left: 0;
+  }
+  50% {
+    bottom: -71px;
+    left:-71px;
+    border: 5px solid red;
+  }
+  100% {
+    bottom: 0;
+    left: 0;
+  }
+}

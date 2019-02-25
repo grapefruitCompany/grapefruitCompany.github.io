@@ -1,0 +1,84 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0;
+
+  background-color: rgba(0,0,0,0.1);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  
+  &__content {
+    position: relative;
+    bottom: -100vw;
+    right: -100vh;
+    
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    min-height: 300px;
+ 
+    width: 70%;
+    height: 50%;
+    border-radius: 20px;
+    background-color: $modal-bg;
+    box-shadow: 5px 15px 15px 0 rgba(0,0,0,0.25);
+    transform: rotate(32deg);
+    transition: 1s ease-in-out;
+  }
+
+  
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eceeef;
+  }
+
+  &__title {
+    margin: 0;
+    line-height: $font-size*1.5;
+    font-size: $font-size*2;
+    font-weight: 500;
+  }
+
+  &__close {
+    float: right;
+    font-size: $font-size*2;
+    font-weight: 400;
+    line-height: $font-size;
+    color: #000;
+    opacity: 0.5;
+    text-decoration: none;
+    
+    &:focus, 
+    &:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: 0.75;
+    }
+  }
+
+  &__body {
+    font-size: $font-size*1.5;
+    padding: 15px;
+  }
+
+  &__text {
+    line-height: $font-size*1.5;
+    font-size: $font-size*1.25;
+    overflow: auto;
+  }
+}

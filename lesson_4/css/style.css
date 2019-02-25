@@ -1,0 +1,218 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+
+	width: 425px;
+	margin: 0;
+	padding: 35px 45px 85px 45px;
+	background-color: #f7f7f7;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+/*Заголовок*/
+h1 {
+	font-weight: normal;
+	line-height: 25px;
+	margin-bottom: 15px; 
+	color: #707070;
+}
+
+h1 span {
+	font-weight: bold;
+}
+
+/*Форма*/
+
+form {
+	display: block;
+	
+	padding: 30px 25px;
+	background-color: #ffffff;	
+	border-radius: 10px;
+	box-shadow: 0px 0 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+/*Задал стили для всех импутов по умолчанию*/
+
+.cell {
+	width: 95%;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #f0f0f0;
+	margin-bottom: 15px;
+	border: none;
+	padding: 0 10px; 
+	font-size: 14px;
+	line-height: 35px;
+	color: #b7b7b7;
+
+}
+
+/*Нашел в интернете кросбраузерной настройки 
+плейсхолеров. Бех них в хроме у меня не работало.
+Но стиль шрифта тоже не удалосб изменить*/
+
+.cell::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #b7b7b7;
+}
+.cell::-moz-placeholder { /* Firefox 19+ */
+  color: #b7b7b7;
+}
+.cell:-ms-input-placeholder { /* IE 10+ */
+  color: #b7b7b7;
+}
+.cell:-moz-placeholder { /* Firefox 18- */
+  color: #b7b7b7;
+}
+
+/*Создани специфических стилей, 
+для отдельных инпутов*/
+
+.name {
+	display: block;
+	width: 42.5%;
+}
+
+.name:nth-child(1) {
+	float: left;
+}
+
+.name:nth-child(2) {
+	float: right;	
+}
+
+/*Задание фоновых картинок в правом углу*/
+
+.login {
+	background-image: url(../img/man.png);
+}
+
+.pass {
+	background-image: url(../img/lock.png);
+}
+
+.login,
+.pass {
+	background-repeat: no-repeat;
+	background-position: 98%;
+	padding-right: 30px;
+/*добавление падинга под картинки сделало их
+более широкими, поэтому пришлось подровнять
+ширину ячеек*/
+	width: 89.75%;
+}
+
+/*стилизация чекбокса*/
+
+.check {
+	width: 10px;
+	height: 10px;
+	visibility: hidden;
+}
+
+.checkbox {
+	position: relative;
+	color: #b7b7b7;
+}
+
+/*псевдо-элемент создает квадратик для галочки*/
+
+.checkbox::before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: -20px;
+	width: 10px;
+	height: 10px;
+	background-color: #f0f0f0;
+}
+
+/*галочка это не картинка, 
+а стилиация с помощью CSS*/
+
+.check:checked + .checkbox::after {
+	content: "";
+    position: absolute;
+    width: 11px;
+    height: 4px;
+	border: 1px solid red;
+    z-index: 1;
+    top: 5px;
+    left: -20px;
+    border-top-style: none;
+    border-right-style: none;
+    transform: rotate(-60deg);
+}
+
+.link {
+	color: #b7b7b7;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+/*кнопка отправки формы*/
+
+.btn {
+	margin: 0 0 20px 0;
+	padding: 0 10px; 
+	font-size: 14px;
+
+	display: inline-block;
+	background-color: rgb(254,161,93);
+	color: white;
+	line-height: 35px;
+	min-width: 55px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background-color: rgba(254,161,93, 0.75);
+}
+
+.footer {
+	text-align: center;
+}
+
+.last {
+	margin: 0 auto;
+	color: #b7b7b7;
+	
+}
+
+.info {
+	font-weight: 0;
+	text-decoration: none;
+	color: #b7b7b7;
+}
+
+/*
+
+.moreInfo {
+	margin: 0 auto;
+	font-weight: normal; 
+	color: #b7b7b7;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 170px;
+}
+*/

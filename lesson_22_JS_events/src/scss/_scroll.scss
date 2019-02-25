@@ -1,0 +1,22 @@
+.scroll {
+  padding: 200px 0;
+  background-color: #f7f7f7;
+  position: relative;
+  
+  &__link {
+    height: 50px;
+    min-width: 100px;
+    border: 1px solid pink;
+    border-radius: 10px;
+    padding: 0 15px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    @include center();
+    @include font(15px, 50px, bold, black)
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+}

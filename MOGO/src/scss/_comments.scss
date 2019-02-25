@@ -1,0 +1,130 @@
+.comments {
+  position: relative;
+  padding: 85px 35px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: $xs) {
+    padding: 35px 10px 0 5px;
+  }
+
+  &__item {
+    flex-grow: 1;
+    margin-right: 75px;
+    margin-bottom: 60px;
+    flex-basis: 400px;
+    z-index: 999;
+    display: flex;
+    flex-wrap: nowrap;
+
+    @media screen and (max-width: $m) {
+      flex-basis: 350px;
+      margin-right: 35px;
+    }    
+
+    @media screen and (max-width: $xs) {
+      margin-right: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  &__pic {
+    flex-basis: 110px;
+    flex-grow: 0;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    
+    &--dix {
+      background-image: url("../img/Layer-47.jpg");  
+      background-position: 50% 10%; 
+    }
+
+    &--castillo {
+      background-image: url("../img/Layer-50.jpg");  
+      background-position: 50% 10%; 
+    }
+
+    &--karvounis {
+      background-image: url("../img/Layer-49.jpg");  
+      background-position: 57.5% 50%;
+    }
+
+    &--petrucci {
+      background-image: url("../img/Layer-51.jpg");  
+      background-position: 26% 10.5%;
+    }
+
+
+  }
+
+  &__block {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin-left: 30px;
+    padding-top: 10px;
+    text-align: left;
+
+    @media screen and (max-width: $xs) {
+      margin-left: 10px;
+    }
+  }
+
+  &__name {
+    font-size: 0.88rem;
+    line-height: 0.88rem;
+
+    font-family: $bold-family;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    color: $color-lightblack;
+  }
+
+  &__position {
+    position: relative;
+    font-size: 0.94rem;
+    line-height: 1.5rem;
+
+    font-family: $roboto-family;
+    margin-bottom: 43px;
+    text-transform: capitalize; 
+    color: $color-lightblack;
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: -20px;
+      width: 60px;
+      height: 3px;
+      background-color: $color-red;
+    }
+
+    // @media screen and (max-width: 320px) {
+    //   font-size: 0.75rem;
+    //   line-height: 1.25rem;
+    // }
+  }
+
+  &__text {
+    font-size: 0.94rem;
+    line-height: 1.5rem;
+
+    font-family: $roboto-family;
+    color: $color-lightblack;    
+  
+    @media screen and (max-width: 320px) {
+      text-align: justify;
+    }
+  }
+  
+}

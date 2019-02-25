@@ -1,0 +1,80 @@
+body {
+	padding: 0;
+	margin: 0; 
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/*
+GENERAL
+*/
+
+.yellow {
+	background-color: yellow;
+}
+
+.red {
+	background-color: red;
+}
+
+.pink {
+	background-color: pink;	
+}
+
+.gray {
+	background-color: gray;	
+}
+
+.item {
+	display: flex;
+	margin: 0px;
+	border: 1px solid black;
+}
+
+.item div {
+	margin: auto;
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+/*
+~~~~~~~~~~~~~~~~~~GRID~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.grid {
+	display: grid;
+	grid-template-columns: 100px 13fr 7fr; 
+	grid-template-rows: 100px 300px 150px;
+	grid-template-areas: 
+		"l m m"
+		"n s b"
+		"f f b"
+	;
+}
+
+.grid .logo {
+	grid-area: l;
+}
+
+.grid .menu {
+	grid-area: m;
+}
+
+.grid .footer {
+	grid-area: f;
+}
+
+.grid .news {
+	grid-area: n;
+}
+
+.grid .smth {
+	grid-area: s;
+}
+
+.grid .nav {
+	grid-area: b;
+}

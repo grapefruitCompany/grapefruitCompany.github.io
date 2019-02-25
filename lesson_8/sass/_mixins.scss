@@ -1,0 +1,21 @@
+@mixin hover {
+  &:hover {
+    background-color: $hoverColor;
+    transition: background-color 0s;
+  }   
+}
+
+@mixin transition($time1, $time2) {
+  transition: 
+    background-color $time1, 
+    transform $time2, 
+    border-radius $time2, 
+    border $time2;
+}
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

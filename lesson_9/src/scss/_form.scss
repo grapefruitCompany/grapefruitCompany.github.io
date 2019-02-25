@@ -1,0 +1,92 @@
+.form {
+  background-color: #fff;
+  padding: 100px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: $xs) {
+      padding: 50px 10px;
+    }
+
+  &__block {
+    margin-bottom: 35px;
+    font-size: 0;
+
+    &:last-child {
+      margin-bottom: 0;  
+    }
+  }
+
+  &__title {
+    display: block;
+    padding: 0;
+    margin: 0 0 35px 0;
+    font-style: italic;
+    text-align: center;
+
+    @include font($fs*2.4, $lh*3.4, normal, #848789);
+  }
+
+  &__wrap {
+    display: flex;
+
+    @media screen and (max-width: $xs) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__email {
+    display: inline-block;
+    width: 400px;
+    height: 70px;
+    padding: 0 25px;
+    margin: 0;
+    margin-right: 10px;
+    border: 1px solid #64c29e;
+    transition: all .5s;
+    font-style: italic;
+    cursor: pointer;
+
+    @include font($fs*2, $lh*7, normal, #929292);
+
+    &:hover {
+      @include font($fs*2, $lh*7, normal, #64c29e);
+    }
+
+    @media screen and (max-width: $xs) {
+      width: 300px;
+      margin: 0;
+      margin-bottom: 35px;
+    }
+  }
+
+  &__submit {
+    display: inline-block;
+    width: 125px;
+    height: 70px;
+    background-color: #64c29e;
+
+    padding: 0 45px;
+    transition: all .5s;
+    border: 1px solid #64c29e;
+
+    @include font($fs*2.4, $lh*7, 300, #fff);
+
+    &:hover {
+      background-color: transparent;
+      transform: scale(1.1);
+      @include font($fs*2.4, $lh*7, 300, #64c29e);
+    }
+
+    &:active {
+      background-color: #51ad8a;
+    }
+
+    @media screen and (max-width: $xs) {
+      width: 300px;
+    }
+  }
+}

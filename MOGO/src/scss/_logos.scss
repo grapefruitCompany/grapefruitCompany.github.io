@@ -1,0 +1,33 @@
+.logos {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    img {
+      width: 100%;
+      display: block;
+    }
+    
+    &__hover :hover {
+      transition: 2s;
+      transform: scale(1.1);
+      display: block;
+      cursor: pointer;
+    }
+  }
+  
+  @media screen and (max-width:950px) {
+    .logos {
+      width: 90%;
+    }
+  }
+  
+  @media screen and (max-width:770px) {
+    .logos {
+      justify-content: center;
+    }
+  }
+  
+  
