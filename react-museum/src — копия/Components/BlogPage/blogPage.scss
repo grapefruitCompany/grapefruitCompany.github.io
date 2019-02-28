@@ -1,0 +1,97 @@
+@import "../../Styles/var";
+
+.blogPage {
+  min-height: 100vh;
+  background: #eeeeee;
+  text-align: center;
+  font: $primary-font;
+  padding: 150px 0;
+
+  &__percentage {
+    margin-bottom: 150px;
+  }
+
+  // &__percentage-title{
+  //   font-family: $text-font;    
+  // }
+
+  &__percentage-text {
+    font-size: 16px;
+    color: $primary-color;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__percentage-item {
+    display: inline-block;
+    margin-right: 150px;
+    font-size: 60px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__posts {
+    padding: 0 25px;
+    margin-bottom: 50px;
+  }
+
+  &__posts-name {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: $primary-color;
+    margin-top: 47px;    
+  }
+
+  &__posts-text {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 30px;
+    color: $primary-color;
+  }
+
+  &__posts-image {
+    margin-bottom: 47px;
+    border-radius: 100px;
+    width: 170px;
+    height: 170px;
+  }
+
+  &__radioButton {
+    margin: 0 7px;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: #cccccc;
+      position: absolute;
+      border: solid 1px $text-color;
+      border-radius: 100%;
+    }
+
+    &:checked {
+      &:after {
+        background: $text-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .blogPage {
+    padding: 100px 0 50px;
+
+    &__percentage-item {
+      margin: 25px;
+    }
+
+    &__percentage {
+      margin-bottom: 50px;
+    }
+  }
+}

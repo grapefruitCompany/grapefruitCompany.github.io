@@ -1,0 +1,48 @@
+.art-page {
+  display: flex;
+  padding: 0 10px;
+  // flex-wrap: wrap;
+
+  &__container {
+    width: 500px;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-grow: 3;
+    margin-right: 10px
+  }
+
+  &__img {
+    // flex-grow: 1;
+    height: 100vh;
+    margin-right: 10px;
+  }
+
+  &__content {
+    flex-grow: 1;
+    flex-basis: 300px;
+    display: inline-block;
+    font-size: 20px;
+    height: 100vh;
+    overflow: auto;
+    word-break: break-all;
+  }
+
+  &__title {
+    margin-bottom: 15px;    
+    font-size: 30px;
+
+    &--sub {
+      font-size: 25px;
+    }
+  }  
+
+  &__list {
+    margin-bottom: 10px;
+  }
+
+  &__paragraph {
+    margin-bottom: 10px;
+  }
+}

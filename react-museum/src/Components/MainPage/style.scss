@@ -1,0 +1,30 @@
+@import '../../Styles/main.scss';
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+
+
+  &__bottom {
+    background-color: $background-color;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+  }
+
+  &__text {
+    text-align: left;
+  }
+
+  &__on-page {
+    display: flex;
+    justify-content: space-between;    
+  }
+}

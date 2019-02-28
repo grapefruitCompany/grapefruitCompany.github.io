@@ -1,0 +1,109 @@
+@import '../../Styles/var';
+
+@mixin image-size($width) {
+  width: $width;
+  height: $width * 415/653;
+}
+
+@mixin image-min-size($width) {
+  min-width: $width;
+  min-height: $width * 415/653;
+}
+
+@mixin image-max-size($width) {
+  max-width: $width;
+  max-height: $width * 415/653;
+}
+
+.about-us {
+  display: flex;
+  justify-content: center;
+  padding: 110px 0 220px;
+
+  &__container {
+    width: 80%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__main-cont {
+    margin-top: 125px;
+    display: flex;
+  }
+
+  &__image-cont {
+    margin-right: 40px;
+    margin-top: 30px;
+  }
+
+  &__image {
+    background: #ffffff url("img/mockupPng.png") 0 0 no-repeat;
+    background-size: cover;
+    @include image-size(45vw);
+  }
+
+  &__about-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__about {
+    font: $primary-font;
+    line-height: 3rem;
+  }
+
+  &__learn-more {
+    display: inline;
+    padding: 1.8rem 4.5rem;
+    font: $primary-font;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: $secondary-color;
+    border-radius: 5px;
+    box-shadow: 0 5px 0 0 $secondary-darker-color;
+
+    &:hover {
+      filter: brightness(1.05) saturate(1.2) drop-shadow(0 1px 0 #444444);
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    &__image-cont {
+      margin: 0;
+    }
+
+    &__image {
+      @include image-size(70vw);
+      @include image-min-size(300px);
+      @include image-max-size(600px);
+    }
+
+    &__main-cont {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    &__about-cont {
+      align-items: center;
+    }
+
+    &__about {
+      padding: 50px 0;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    &__image-cont {
+      margin-top: 0;
+    }
+
+    &__image {
+      @include image-max-size(600px);
+    }
+  }
+}

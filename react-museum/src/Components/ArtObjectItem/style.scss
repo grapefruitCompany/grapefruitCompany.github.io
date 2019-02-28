@@ -1,0 +1,44 @@
+.artObjects {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: center;
+
+  &__img {
+    width: 200px;
+  }
+
+  &__title {
+    position: absolute;
+    padding: 5px;
+    top: 70%;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    color: #ffffff;
+    font-size: 15px;
+    vertical-align: center;
+    transform: translateY(110%);
+    transition: all .5s;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    align-self: center;
+    transition: all .3s;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      
+      & .artObjects__title {
+        transform: translateX(0);
+      }
+    }
+  }
+}

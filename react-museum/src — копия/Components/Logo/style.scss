@@ -1,0 +1,11 @@
+@import '../../Styles/var';
+
+.logo {
+  font: $title-font;
+
+  &__item {
+    &--secondary {
+      color: $secondary-color;
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import '../../Styles/var';
+
+.wrap {
+  text-align: center;
+  padding: 135px 0 55px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider {
+  margin: 0 auto;
+
+  &__controls {
+    margin-bottom: 155px;
+  }
+
+  &__control {
+    width: 64px;
+    height: 70px;
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 7px;
+    }
+  }
+
+  &__inner {
+    overflow: hidden;
+    max-width: 1130px;
+
+    @media screen and (min-width: 1130px) {
+      margin: 0 auto;
+    }
+  }
+  
+  &__slides {
+    width: 33vw * 11;
+    font-size: 0;
+    transition: all .5s ;
+
+    @media screen and (min-width: 1130px) {
+      width: 4136px;
+    }
+
+    @media screen and (max-width: 780px) {
+      width: 50vw * 11;
+    }
+
+    @media screen and (max-width: 550px) {
+      width: 100vw * 11;
+    }
+  }
+
+  &__item {
+    width: 33vw;
+    display: inline-block;
+    font-size: 20px;
+
+    @media screen and (min-width: 1130px) {
+      width: 376px;
+    }
+
+    @media screen and (max-width: 780px) {
+      width: 50vw;
+    }
+
+    @media screen and (max-width: 550px) {
+      width: 100vw;
+    }
+  }
+
+  &__photo {
+    height: 250px;
+    border-radius: 50%;
+    margin-bottom: 83px;
+  }
+
+  &__name {
+    margin-bottom: 25px;
+    color: $team-name-color;
+  }
+
+  &__position {
+    margin-bottom: 35px;
+    color: $team-position-color;
+  }
+
+  &__icon {
+    display: inline-block;
+    border: 1px solid $team-border-color;
+    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 22px;
+    color: $team-social-color;
+
+    &:first-child {
+      margin-right: 25px;
+    }
+
+    &:hover {
+      border: 1px solid $secondary-color;
+      color: $secondary-color;
+    }
+  }
+}
+
+@for $i from 0 through 3 {
+  .slider__slides--#{$i} {
+      transform: translate($i * -11vw * 11);  
+    }
+  }
+
+
+
+// @media screen and (min-width: 1130px) {
+//   width: 376px;
+// }
+
+// @media screen and (max-width: 780px) {
+//   width: 49vw;
+// }
+
+// @media screen and (max-width: 550px) {
+//   width: 100vw;
+// }

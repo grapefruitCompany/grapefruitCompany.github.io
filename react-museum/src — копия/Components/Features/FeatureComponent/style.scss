@@ -1,0 +1,96 @@
+@import '../../../Styles/var';
+
+.feature-component {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__hexagon {
+    fill: transparent;
+    fill-opacity: 0.1;
+    stroke: #ccd0d2;
+    stroke-linejoin: round;
+    stroke-width: 4px;
+    fill-rule: evenodd;
+    transition-duration: 0.2s;
+  }
+
+  &__hexagon-inner-svg {
+    position: absolute;
+    top: calc(50% - 5px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__hexagon-inner {
+    fill: #ccd0d2;
+    transition-duration: 0.2s;
+  }
+
+  &__headline {
+    padding: 30px 0;
+    font: $primary-font;
+    font-weight: 700;
+    font-size: 2.4rem;
+  }
+
+  &__paragraph {
+    font: $primary-font;
+    line-height: 2.4rem;
+    text-align: center;
+  }
+
+  &:hover {
+    .feature-component__hexagon {
+      stroke: $secondary-color;
+    }
+
+    .feature-component__hexagon-inner {
+      fill: $secondary-color;
+    }
+  }
+
+  @media screen and (max-width: 1360px) {
+    width: 85%;
+
+    &__wrapper {
+      width: 50%;
+      flex-basis: 50%;
+    }
+  }
+
+  @media screen and (max-width: 1065px) {
+    &__wrapper {
+      width: 50%;
+      flex-basis: 50%;
+
+      &:nth-child(3),
+      &:last-child {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    &__wrapper {
+      width: 100%;
+      flex-basis: 100%;
+
+      &:nth-child(2) {
+        margin-top: 40px;
+      }
+    }
+  }
+}
