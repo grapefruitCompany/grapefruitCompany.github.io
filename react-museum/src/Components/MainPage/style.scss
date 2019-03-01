@@ -3,7 +3,7 @@
 .main-page {
   display: flex;
   flex-direction: column;
-
+  padding: 10px 10px 0 10px;
 
   &__bottom {
     background-color: $background-color;
@@ -26,5 +26,121 @@
   &__on-page {
     display: flex;
     justify-content: space-between;    
+  }
+
+  &__search {
+    position: relative;
+  }
+
+  &__search-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 15px;
+    color: $primary-color-active;
+    transition: all .3s;
+  }
+
+  &__search-border {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $primary-color-active;
+    transition: 0.4s;
+  }
+
+  &__search-input {
+    width: 100%;
+    border: 0; 
+    padding: 5px 5px; 
+    border-bottom: 1px solid $disabled-color; 
+    background-color: transparent;
+    font-size: 15px;
+    color: $primary-color-active;
+    transition: all .3s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus::placeholder {
+      opacity: 1;
+    }
+
+    &::placeholder {
+      opacity: 0;
+      transition: all .3s;
+    }
+
+    &:not(:placeholder-shown) ~ .main-page__search-label {
+      top: -10px; 
+      font-size: 10px;
+      color: $disabled-color; 
+      transition: 0.3s;
+    }
+
+    &:not(:-ms-input-placeholder) ~ .main-page__search-label {
+      top: -10px; 
+      font-size: 10px;
+      color: $disabled-color; 
+      transition: 0.3s;
+    }
+
+    &:focus ~ .main-page__search-label {
+      top: -10px; 
+      font-size: 10px;
+      color: $disabled-color; 
+      transition: 0.3s;
+    }
+
+    &:focus ~ .main-page__search-border,
+    &:not(:placeholder-shown) ~ .main-page__search-border{
+      width: 100%; 
+      transition: 0.4s;
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+/* IE10+ CSS styles go here */
+  .main-page__search-label {
+    display: none;
+  }
+
+  .main-page__search-input:focus::placeholder {
+    opacity: 0;
+  }
+
+  .main-page__search-input::placeholder {
+    opacity: 1;
+    transition: all .3s;
+  }
+
+  .main-page__search-input:focus ~ .main-page__search-border {
+    width: 100%; 
+    transition: 0.4s;
+  }
+}
+
+@supports (-ms-ime-align: auto) {
+/* MS Edge CSS styles go here */
+  .main-page__search-label {
+    display: none;
+  }
+
+  .main-page__search-input:focus::placeholder {
+    opacity: 0;
+  }
+
+  .main-page__search-input::placeholder {
+    opacity: 1;
+    transition: all .3s;
+  }
+
+  .main-page__search-input:focus ~ .main-page__search-border {
+    width: 100%; 
+    transition: 0.4s;
   }
 }

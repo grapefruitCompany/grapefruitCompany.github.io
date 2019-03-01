@@ -11,7 +11,9 @@ class MainPage extends React.Component {
     artObjects: [],
     count: null,
     pageNumber: 1,
-    objectsOnPage: 5
+    objectsOnPage: 5,
+    baseUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
+    lastUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json'
   }
   //E7u3uumr
 
@@ -20,15 +22,14 @@ class MainPage extends React.Component {
   }
 
   getCollection(pageNumber, objectsOnPage = this.state.objectsOnPage) {
-    fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json&p=${pageNumber}&ps=${objectsOnPage}`)
+    fetch(`${this.state.lastUrl}&p=${pageNumber}&ps=${objectsOnPage}`)
       .then(response => {
         response.json().then(data => {
-          console.log('getCollection \n', data);
           this.setState({
             artObjects: data.artObjects,
             count: data.count,
             pageNumber: pageNumber,
-            objectsOnPage:  objectsOnPage
+            objectsOnPage:  objectsOnPage,
           });
         })
       })
@@ -36,10 +37,14 @@ class MainPage extends React.Component {
   }
 
   getAllMatches(query) {
-    fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json&p=1&ps=${this.state.objectsOnPage}&q=${query}`)
+    let currentUrl = `${this.state.baseUrl}&q=${query}`;
+    this.setState({
+      lastUrl: currentUrl,
+      pageNumber: 1
+    });
+    fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${this.state.objectsOnPage}`)
       .then(response => {
         response.json().then(data => {
-          console.log('getAllMatches \n', data);
           this.setState({
             artObjects: data.artObjects,
             count: data.count
@@ -55,14 +60,36 @@ class MainPage extends React.Component {
     }
   }
 
+  reset() {
+    this.setState({
+      lastUrl: this.state.baseUrl
+    });
+    this.getAllMatches('');
+  }
+
   render() {
-    let numberArtObjectsFrom = this.state.objectsOnPage * this.state.pageNumber - this.state.objectsOnPage + 1,
-        numberArtObjectsTo = this.state.objectsOnPage * this.state.pageNumber,
-        count = this.state.count > 10000 ? 10000 : this.state.count;
+    console.log(this.state.lastUrl);
+    let count = this.state.count > 10000 ? 10000 : this.state.count,
+        numberArtObjectsFrom = this.state.objectsOnPage * this.state.pageNumber - this.state.objectsOnPage + 1,
+        numberArtObjectsTo = (numberArtObjectsFrom + this.state.objectsOnPage) > count ? count : (this.state.objectsOnPage * this.state.pageNumber);
     return (
       <div className="main-page" >
         <div className="top">
-          <input type="text" plaseholder="Search for..." onChange={ this.handleChange.bind(this) } className="top__search"/>
+          <form>
+            <div className="main-page__search">
+              <input
+                id="search"
+                type="text"
+                onChange={ this.handleChange.bind(this) }
+                className="main-page__search-input"
+                placeholder="e.g. Van Gogh"
+              />
+              <label htmlFor="search" className="main-page__search-label">Search for...</label>
+              <span className="main-page__search-border"></span>
+            </div>          
+            <button onClick={() => this.reset()} type="reset" value="reset">Reset</button>
+          </form>
+        
         </div>
         <ArtObjectItem artObjects={ this.state.artObjects }/>
         <div className="main-page__bottom">
@@ -75,7 +102,7 @@ class MainPage extends React.Component {
             <Paginator
               pageNumber={ this.state.pageNumber }
               objectsOnPage={ this.state.objectsOnPage }
-              count={ this.state.count }
+              count={ count }
               getCollection={ this.getCollection.bind(this) }
             />
           </div>
@@ -92,8 +119,3 @@ class MainPage extends React.Component {
 }
 
 export default MainPage;
-
-            // <button onClick={ () => this.getCollection(1, 10) } className="main-page__btn">10</button>
-            // <button onClick={ () => this.getCollection(1, 20) } className="main-page__btn">20</button>
-            // <button onClick={ () => this.getCollection(1, 50) } className="main-page__btn">50</button>
-            // <button onClick={ () => this.getCollection(1, 100) } className="main-page__btn">100</button>

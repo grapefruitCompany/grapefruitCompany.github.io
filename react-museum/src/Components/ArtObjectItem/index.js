@@ -48,23 +48,27 @@ class ArtObjectItem extends React.Component {
       let showArtObjects = () => {
         let list = this.props.artObjects,
             result =[];
-        if (!list.length) return;
+        if (!list.length) {
+          return (
+            <div className="art-objects__no-matches">No matches found.</div>
+          );
+        }
         for (let i = 0; i < list.length; i++) {
           let {objectNumber, webImage, longTitle, title} = list[i];
           if (!webImage) {
             webImage = {url: './img/No_Image_available.jpg'};
           }
           result.push(
-              <div className="artObjects__item" onClick={ () => { this.handleClick(objectNumber, webImage.url, longTitle) } } key={ objectNumber }>
-                <img className="artObjects__img" src={ webImage.url } alt={ longTitle }/>
-                <p className="artObjects__title">{ title }</p>
+              <div className="art-objects__item" onClick={ () => { this.handleClick(objectNumber, webImage.url, longTitle) } } key={ objectNumber }>
+                <img className="art-objects__img" src={ webImage.url } alt={ longTitle }/>
+                <p className="art-objects__title">{ title }</p>
               </div>
           );
         }
         return result;
       }
     return (
-      <div className="artObjects">
+      <div className="art-objects">
         { showArtObjects() }
         <PopUp popUpContent={ this.state.popUpContent } closeModalWindow={ this.closeModalWindow.bind(this)} />
       </div>

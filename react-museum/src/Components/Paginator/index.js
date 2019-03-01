@@ -6,7 +6,7 @@ class Paginator extends React.Component {
   render() {
     let showPageNumbers = () => {
       let {pageNumber, objectsOnPage, getCollection, count} = this.props,
-          totalPages = count / objectsOnPage,
+          totalPages = Math.ceil(count / objectsOnPage),
           result = [];
 
       if (pageNumber === 1) {
