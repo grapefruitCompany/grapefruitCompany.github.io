@@ -21,16 +21,13 @@
 
   &__title {
     position: absolute;
-    padding: 5px;
-    top: 70%;
-    bottom: 1px;
-    left: 0;
-    right: 0;
+    padding: 10px 5px;
+    width: 100%;
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
     color: #ffffff;
     font-size: 15px;
     vertical-align: center;
-    transform: translateY(110%);
+    transform: translateY(0);
     transition: all .5s;
   }
 
@@ -45,8 +42,8 @@
       transform: scale(1.05);
       cursor: pointer;
       
-      & .artObjects__title {
-        transform: translateX(0);
+      & .art-objects__title {
+        transform: translateY(-105%);
       }
     }
   }

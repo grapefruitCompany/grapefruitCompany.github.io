@@ -2,9 +2,17 @@ import React from 'react';
 import ArtObjectItem from '../ArtObjectItem';
 import Paginator from '../Paginator';
 import OnPageButtons from '../OnPageButtons';
+import ReactSelect from '../ReactSelect';
 import './style.scss';
 import '../../Styles/main.scss';
 // import { Link } from "react-router-dom";
+
+//Добавить возможность сортировки и поиска по:
+//материалу
+//периоду
+//автору
+//цвету
+//типу
 
 class MainPage extends React.Component {
   state = {
@@ -57,14 +65,9 @@ class MainPage extends React.Component {
   handleChange(e) {
     if (e.target.value && e.target.value.length > 1) {
       this.getAllMatches(e.target.value);
-    }
-  }
-
-  reset() {
-    this.setState({
-      lastUrl: this.state.baseUrl
-    });
+    } else if (e.target.value.length === 0) {
     this.getAllMatches('');
+    }
   }
 
   render() {
@@ -74,23 +77,20 @@ class MainPage extends React.Component {
         numberArtObjectsTo = (numberArtObjectsFrom + this.state.objectsOnPage) > count ? count : (this.state.objectsOnPage * this.state.pageNumber);
     return (
       <div className="main-page" >
-        <div className="top">
-          <form>
-            <div className="main-page__search">
-              <input
-                id="search"
-                type="text"
-                onChange={ this.handleChange.bind(this) }
-                className="main-page__search-input"
-                placeholder="e.g. Van Gogh"
-              />
-              <label htmlFor="search" className="main-page__search-label">Search for...</label>
-              <span className="main-page__search-border"></span>
-            </div>          
-            <button onClick={() => this.reset()} type="reset" value="reset">Reset</button>
-          </form>
+        <form className="main-page__form">
+          <ReactSelect />
+          <div className="main-page__search">
+            <input
+              id="search"
+              type="text"
+              onChange={ this.handleChange.bind(this) }
+              className="main-page__search-input"
+              placeholder="Search for..."
+            />
+            <span className="main-page__search-border"></span>
+          </div>          
+        </form>
         
-        </div>
         <ArtObjectItem artObjects={ this.state.artObjects }/>
         <div className="main-page__bottom">
           <div className="main-page__info">
