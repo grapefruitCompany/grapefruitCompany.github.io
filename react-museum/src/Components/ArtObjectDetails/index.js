@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.scss';
 import '../../Styles/main.scss';
-// import { Link } from "react-router-dom";
+import chroma from 'chroma-js';
+import { Link } from "react-router-dom";
 
 class ArtObjectDetails extends React.Component {
   state = {
@@ -21,7 +22,6 @@ class ArtObjectDetails extends React.Component {
 
   componentDidMount() {
     const { objectnumber } = this.props.match.params;
-
     let url = `https://www.rijksmuseum.nl/api/nl/collection/${objectnumber}?key=E7u3uumr&format=json`;
     fetch(url)
       .then(response => {
@@ -49,6 +49,46 @@ class ArtObjectDetails extends React.Component {
     const image = {
       backgroundImage: 'url(' + this.state.webImageUrl + ')',
     };
+
+    function showColors(colors) {
+      let colorsHex = [],
+          result = [];
+      if (colors) {
+        for (let i = 0; i < colors.length; i++) {
+          let duplicate = false;
+          for (let j = 0; j < i; j++) {
+            if (colors[j].normalizedHex === colors[i].normalizedHex) {
+              duplicate = true;
+            }
+          }
+
+          if (!duplicate) {
+            colorsHex.push(colors[i].normalizedHex)
+          }
+        }
+      }
+      for(let i = 0; i < colorsHex.length; i++) {
+        let styling = {
+          color: chroma(colorsHex[i])
+        }
+        result.push(
+          <li className="art-page__link" key={ i }>
+            <Link
+              style={ styling }
+              to={{
+                pathname: '/',
+                state: {
+                  tag: 'color',
+                  value: colorsHex[i]
+                }
+            }}>{ colorsHex[i] }</Link>
+          </li>
+        );
+      }
+
+      return result;
+    }
+
     return (
       <div className="art-page">
         <div className="art-page__container" style={image} >
@@ -62,9 +102,15 @@ class ArtObjectDetails extends React.Component {
             <li>Physical medium: { this.state.physicalMedium }</li>
             <li>Materials: { this.state.materialsPresentingDate }</li>
           </ul>
-          <h2 className="art-page__title art-page__title--sub">Description Dutch</h2>
+          <h3 className="art-page__title art-page__title--sub">
+            Normalized Hex Colors
+          </h3>
+          <ul className="art-page__list">
+            { showColors(this.state.colorsWithNormalization) }
+          </ul>
+          <h3 className="art-page__title art-page__title--sub">Description Dutch</h3>
           <p className="art-page__paragraph">{ this.state.plaqueDescriptionDutch }</p>
-          <h2 className="art-page__title art-page__title--sub">Description English</h2>
+          <h3 className="art-page__title art-page__title--sub">Description English</h3>
           <p className="art-page__paragraph">{ this.state.plaqueDescriptionEnglish }</p>
         </div>
       </div>

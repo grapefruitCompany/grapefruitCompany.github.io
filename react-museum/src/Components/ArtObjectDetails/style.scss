@@ -1,3 +1,5 @@
+@import '../../Styles/main.scss';
+
 .art-page {
   display: flex;
   padding: 0 10px;
@@ -40,9 +42,31 @@
 
   &__list {
     margin-bottom: 10px;
+    font-size: 15px;
   }
 
   &__paragraph {
     margin-bottom: 10px;
   }
+
+  &__link {
+    padding: 5px;
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    background-color: transparent;
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: bold;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary-color;
+    }
+
+    &:active {
+      transform: translateY(3px);
+    }
+  }
+
 }
