@@ -75,6 +75,26 @@
       transition: 0.4s;
     }
   }
+
+  &__reset {
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    outline: 0;
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: all .3s;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $hover-text-color;
+    }
+
+    &:active {
+      transform: translateY(3px);
+    }
+  }
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

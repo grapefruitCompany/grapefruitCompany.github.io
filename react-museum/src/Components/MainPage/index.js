@@ -2,9 +2,19 @@ import React from 'react';
 import ArtObjectItem from '../ArtObjectItem';
 import Paginator from '../Paginator';
 import OnPageButtons from '../OnPageButtons';
-import ReactSelect from '../ReactSelect';
+import SelectFilter from '../SelectFilter';
 import './style.scss';
 import '../../Styles/main.scss';
+
+//Search by maker doesn't work at all: https://github.com/Rijksmuseum/api-issues/issues/11
+
+// SelectFilter:
+// - Убрать повторения в массиве цветов
+
+// Везде: 
+// - добавить комментарии
+// - проверить везде стили и код
+// - выложить на гитхабпейджес
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -20,10 +30,8 @@ class MainPage extends React.Component {
       objectsOnPage: 5,
       baseUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
       lastUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
-      principalMaker: [],
       type: [],
       datingPeriod: [],
-      place: [],
       material: [],
       technique: [],
       normalized32Colors: []
@@ -32,23 +40,92 @@ class MainPage extends React.Component {
 
   componentDidMount() {
     if (this.props.location.state) {
-      switch (this.props.location.state.tag) {
-        case ('color'):
-          this.filterByColor(this.props.location.state.value);
-          this.setState({
-            filter: {
-              tag: 'color',
-              value: this.props.location.state.value
-            }
-          });
-          break;
-        default:
-          console.log('Error!\n', this.props.location.state.tag, '\n No match!');
-          this.getCollection(this.state.pageNumber, this.state.objectsOnPage);
-      }
+      this.matchingUrlAndFilter(this.props.location.state.tag, this.props.location.state.value);
     } else {
       this.getCollection(this.state.pageNumber, this.state.objectsOnPage);
     }
+  }
+
+  matchingUrlAndFilter(tag, value) {
+    let currentUrl;
+    switch (tag) {
+      case ('normalized32Colors'):
+        value = value.match(/\w*/g).join('');
+        currentUrl = this.state.baseUrl + '&f.normalized32Colors.hex=%23' + value;
+        this.setState({
+          filter: {
+            tag: 'normalized32Colors',
+            value: value
+          }
+        });
+        this.getFilter(currentUrl);
+        break;
+      case ('type'):
+        currentUrl = this.state.baseUrl + '&type=' + value;
+        this.setState({
+          filter: {
+            tag: 'type',
+            value: value
+          }
+        });
+        this.getFilter(currentUrl);
+        break;
+      case ('datingPeriod'):
+        currentUrl = this.state.baseUrl + '&f.dating.period=' + value;
+        this.setState({
+          filter: {
+            tag: 'datingPeriod',
+            value: value
+          }
+        });
+        this.getFilter(currentUrl);
+        break;
+      case ('material'):
+        currentUrl = this.state.baseUrl + '&material=' + value;
+        this.setState({
+          filter: {
+            tag: 'material',
+            value: value
+          }
+        });
+        this.getFilter(currentUrl);
+        break;
+      case ('technique'):
+        currentUrl = this.state.baseUrl + '&technique=' + value;
+        this.setState({
+          filter: {
+            tag: 'technique',
+            value: value
+          }
+        });
+        this.getFilter(currentUrl);
+        break;
+      default:
+        console.log('Error!\n', this.props.location.state.tag, '\n No match!');
+        this.getCollection(this.state.pageNumber, this.state.objectsOnPage);
+    }
+  }
+
+  getFilter(currentUrl) {
+    this.setState({
+      lastUrl: currentUrl,
+      pageNumber: 1
+    });
+    fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${this.state.objectsOnPage}`)
+      .then(response => {
+        response.json()
+        .then(data => {
+          this.setState({
+            artObjects: data.artObjects,
+            count: data.count,
+            type: data.facets[1].facets,
+            datingPeriod: data.facets[2].facets,
+            material: data.facets[4].facets,
+            technique: data.facets[5].facets,
+            normalized32Colors: data.facets[6].facets
+          });
+        })
+      })
   }
 
   getCollection(pageNumber, objectsOnPage = this.state.objectsOnPage) {
@@ -61,10 +138,8 @@ class MainPage extends React.Component {
             count: data.count,
             pageNumber: pageNumber,
             objectsOnPage:  objectsOnPage,
-            principalMaker: data.facets[0].facets,
             type: data.facets[1].facets,
             datingPeriod: data.facets[2].facets,
-            place: data.facets[3].facets,
             material: data.facets[4].facets,
             technique: data.facets[5].facets,
             normalized32Colors: data.facets[6].facets
@@ -86,10 +161,8 @@ class MainPage extends React.Component {
           this.setState({
             artObjects: data.artObjects,
             count: data.count,
-            principalMaker: data.facets[0].facets,
             type: data.facets[1].facets,
             datingPeriod: data.facets[2].facets,
-            place: data.facets[3].facets,
             material: data.facets[4].facets,
             technique: data.facets[5].facets,
             normalized32Colors: data.facets[6].facets
@@ -107,44 +180,21 @@ class MainPage extends React.Component {
     }
   }
 
-  filterByColor(query) {
-    query = query.match(/\w*/g).join('');
-    let currentUrl = this.state.baseUrl + '&f.normalized32Colors.hex=%23' + query;
-    this.setState({
-      lastUrl: currentUrl,
-      pageNumber: 1
-    });
-    fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${this.state.objectsOnPage}`)
-      .then(response => {
-        response.json()
-        .then(data => {
-          this.setState({
-            artObjects: data.artObjects,
-            count: data.count,
-            principalMaker: data.facets[0].facets,
-            type: data.facets[1].facets,
-            datingPeriod: data.facets[2].facets,
-            place: data.facets[3].facets,
-            material: data.facets[4].facets,
-            technique: data.facets[5].facets,
-            normalized32Colors: data.facets[6].facets
-          });
-        })
-      })
+  reset() {
+    this.getAllMatches('');
   }
 
   render() {
-    // console.log(this.state);
     let count = this.state.count > 10000 ? 10000 : this.state.count,
         numberArtObjectsFrom = this.state.objectsOnPage * this.state.pageNumber - this.state.objectsOnPage + 1,
         numberArtObjectsTo = (numberArtObjectsFrom + this.state.objectsOnPage) > count ? count : (this.state.objectsOnPage * this.state.pageNumber);
     return (
       <div className="main-page" >
         <form className="main-page__form">
-          <ReactSelect
+          <SelectFilter
             filter={ this.state.filter }
-            colors={ this.state.normalized32Colors }
-            filterByColor={ this.filterByColor.bind(this) }
+            data={ this.state }
+            matchingUrlAndFilter={ this.matchingUrlAndFilter.bind(this) }
           />
           <div className="main-page__search">
             <input
@@ -156,6 +206,7 @@ class MainPage extends React.Component {
             />
             <span className="main-page__search-border"></span>
           </div>
+          <button className="main-page__reset" type="reset" value="reset" onClick={ this.reset.bind(this) }>Reset</button>
         </form>
         
         <ArtObjectItem artObjects={ this.state.artObjects }/>

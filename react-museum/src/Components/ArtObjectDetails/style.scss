@@ -24,11 +24,14 @@
   &__content {
     flex-grow: 1;
     flex-basis: 300px;
-    display: inline-block;
     font-size: 20px;
     height: 100vh;
     overflow: auto;
     word-break: break-all;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__title {
@@ -49,23 +52,38 @@
     margin-bottom: 10px;
   }
 
+  &__item {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
   &__link {
     padding: 5px;
     border: 1px solid $primary-color;
     border-radius: 5px;
     background-color: transparent;
     display: inline-block;
-    margin-right: 5px;
-    font-weight: bold;
+    margin-left: 5px;
+    margin-bottom: 5px;
     transition: all .3s;
+    font-weight: normal;
     cursor: pointer;
 
     &:hover {
       background-color: $primary-color;
+      color: $hover-text-color;
     }
 
     &:active {
       transform: translateY(3px);
+    }
+
+    &--main {
+      border-color: $secondary-color;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
     }
   }
 

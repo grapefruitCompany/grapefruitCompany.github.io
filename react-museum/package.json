@@ -29,6 +29,7 @@
   ],
   "devDependencies": {
     "chroma-js": "^2.0.3",
+    "gh-pages": "^2.0.1",
     "react-select": "^2.4.1",
     "webpack": "^4.28.3"
   }
