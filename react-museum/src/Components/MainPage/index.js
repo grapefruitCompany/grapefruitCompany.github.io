@@ -8,13 +8,19 @@ import '../../Styles/main.scss';
 
 //Search by maker doesn't work at all: https://github.com/Rijksmuseum/api-issues/issues/11
 
+//Todo List for release version
 // SelectFilter:
 // - Убрать повторения в массиве цветов
 
+// MainPage:
+// - Добавить чекбокс, отображать или не отоюражать объекты без картинок
+
 // Везде: 
 // - добавить комментарии
+// - добавить везде адаптацию под планшет и мобайл
 // - проверить везде стили и код
-// - выложить на гитхабпейджес
+
+// =>> deploy on github pages
 
 class MainPage extends React.Component {
   constructor(props) {
