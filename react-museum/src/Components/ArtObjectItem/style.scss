@@ -7,9 +7,16 @@
   justify-content: space-between;
   align-items: stretch;
   align-content: center;
+  @media screen and (max-width: 530px) {
+    justify-content: center;
+    padding: 10px;
+  }
 
   &__img {
     width: 200px;
+    @media screen and (max-width: 530px) {
+      width: 300px;
+    }
   }
 
   &__no-matches {

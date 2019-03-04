@@ -3,7 +3,11 @@
 .art-page {
   display: flex;
   padding: 0 10px;
-  // flex-wrap: wrap;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__container {
     width: 500px;
@@ -12,7 +16,16 @@
     background-repeat: no-repeat;
     background-size: contain;
     flex-grow: 3;
-    margin-right: 10px
+    margin-right: 10px;
+
+    @media screen and (max-width: 1000px) {
+      margin-right: 0;
+      height: 60vh;
+    }
+
+    @media screen and (max-width: 501px) {
+      width: 100%;
+    }
   }
 
   &__img {
@@ -31,6 +44,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+
+    @media screen and (max-width: 1000px) {
+      overflow: visible;
+    }
   }
 
   &__title {
@@ -42,13 +60,17 @@
     }
   }  
 
+  &__desc {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   &__list {
     margin-bottom: 10px;
     font-size: $font-size;
-  }
-
-  &__paragraph {
-    margin-bottom: 10px;
   }
 
   &__item {

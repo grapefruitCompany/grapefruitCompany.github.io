@@ -9,7 +9,7 @@ class OnPageButtons extends React.Component {
   render() {
     let showButtons = () => {
       let {objectsOnPage, getCollection} = this.props,
-          values = [5, 10, 20, 50, 100],
+          values = [10, 20, 50, 100],
           result =[];
       for (let i = 0; i < values.length; i++) {
         let value = values[i],
@@ -28,9 +28,9 @@ class OnPageButtons extends React.Component {
     }
 
     return (
-      <React.Fragment>
+      <>
         { showButtons() }
-      </React.Fragment>
+      </>
     )
   }
 }
