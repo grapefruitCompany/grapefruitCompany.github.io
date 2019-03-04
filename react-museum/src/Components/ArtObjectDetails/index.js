@@ -75,7 +75,7 @@ class ArtObjectDetails extends React.Component {
         );
       } else if (desc && lang === 'nl') {//decription in dutch
         result = (
-          <div>
+          <div className='art-page__desc'>
             <h3 className='art-page__title art-page__title--sub'>Description in Dutch</h3>
             <p>{ desc }</p>
           </div>
@@ -180,8 +180,8 @@ class ArtObjectDetails extends React.Component {
         <div className="art-page__container" style={image} >
         </div>
         <div className="art-page__content">
+          <h1 className="art-page__title">{ this.state.longTitle }</h1>
           <div>
-            <h1 className="art-page__title">{ this.state.longTitle }</h1>
             <ul className="art-page__list">
               { showArray('Type', this.state.type) }
               { showPeriod(this.state.datingPeriod) }

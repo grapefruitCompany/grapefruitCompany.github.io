@@ -8,41 +8,25 @@ import '../../Styles/main.scss';
 
 //Search by maker doesn't work at all: https://github.com/Rijksmuseum/api-issues/issues/11
 
-//Todo List for release version
-
-// Add Order By Tag:
-// - запрашиваем всегда 10000 арт объектов
-// - в зависимости от выбрного Тег делаем сортировку по его значением и обновляем стейт: filter.tag
-// - если у арт объекта несколько значений тега в массиве, то сортируем по первому
-// - обновляем компоненты OnPageButtons и Paginator на отображение без запроса на сервер
-// - Добавить чекбокс, отображать или не отоюражать объекты без картинок
-
-// Adaptive lasyouts: 
-// - добавить везде адаптацию под планшет и мобайл
-
-// =>> deploy on github pages
-
 class MainPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filter: {
-        tag: '',
-        value: ''
-      },
-      artObjects: [],
-      count: null,
-      pageNumber: 1,
-      objectsOnPage: 5,
-      baseUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
-      lastUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
-      //further goes lists of tags
-      type: [],
-      datingPeriod: [],
-      material: [],
-      technique: [],
-      normalized32Colors: []
-    }
+  state = {
+    filter: {
+      tag: '',
+      value: ''
+    },
+    artObjects: [],
+    count: null,
+    pageNumber: 1,
+    objectsOnPage: 20,
+    baseUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
+    lastUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
+    byAuthor: false, //is it should be sorted by author or not
+    //further goes lists of tags
+    type: [],
+    datingPeriod: [],
+    material: [],
+    technique: [],
+    normalized32Colors: []
   }
 
   componentDidMount() {
@@ -124,19 +108,17 @@ class MainPage extends React.Component {
       lastUrl: currentUrl, //updationg current url for request in state
       pageNumber: 1
     });
-    fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${this.state.objectsOnPage}`)
+    fetch(`${currentUrl}&p=${this.state.pageNumber}ps=${this.state.objectsOnPage}`)
       .then(response => {
         response.json()
         .then(data => {
+          if (this.state.byAuthor) {
+            data.artObjects = this.sortByAuthor(data.artObjects);
+          }
           this.setState({
             //refreshing all data in state
             artObjects: data.artObjects,
             count: data.count,
-            type: data.facets[1].facets,
-            datingPeriod: data.facets[2].facets,
-            material: data.facets[4].facets,
-            technique: data.facets[5].facets,
-            normalized32Colors: data.facets[6].facets
           });
         })
       })
@@ -145,9 +127,12 @@ class MainPage extends React.Component {
   getCollection(pageNumber, objectsOnPage = this.state.objectsOnPage) {
     //this function is making request for pagination or for displaying different quantity of art objects on page 
     let currentUrl = this.state.lastUrl;
-    fetch(`${currentUrl}&p=${pageNumber}&ps=${objectsOnPage}`)
+    fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${objectsOnPage}`)
       .then(response => {
         response.json().then(data => {
+          if (this.state.byAuthor) {
+            data.artObjects = this.sortByAuthor(data.artObjects);
+          }
           this.setState({
             artObjects: data.artObjects,
             count: data.count,
@@ -174,6 +159,9 @@ class MainPage extends React.Component {
     fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${this.state.objectsOnPage}`)
       .then(response => {
         response.json().then(data => {
+          if (this.state.byAuthor) {
+            data.artObjects = this.sortByAuthor(data.artObjects);
+          }
           this.setState({
             artObjects: data.artObjects,
             count: data.count,
@@ -188,6 +176,13 @@ class MainPage extends React.Component {
       .catch(error => console.log(error)); 
   }
 
+  sortByAuthor(arr) {
+    return arr.sort((a, b) => {
+      if (a.principalOrFirstMaker > b.principalOrFirstMaker) return 1;
+      if (a.principalOrFirstMaker < b.principalOrFirstMaker) return -1;
+    });
+  }
+
   handleChange(e) {
     //when we put somting in search input
     if (e.target.value && e.target.value.length > 1) {
@@ -195,6 +190,13 @@ class MainPage extends React.Component {
     } else if (e.target.value.length === 0) {
     this.getAllMatches('');
     }
+  }
+
+  orderByAuthor() {
+    this.setState({
+      byAuthor: !this.state.byAuthor
+    });
+    this.getCollection(1);
   }
 
   reset() {
@@ -209,6 +211,18 @@ class MainPage extends React.Component {
     return (
       <div className="main-page" >
         <form className="main-page__form">
+          <div className="main-page__order-by">
+            <input
+              onChange={ this.orderByAuthor.bind(this) }
+              id="orderByAuthor"
+              type="checkbox"
+              className="main-page__cbx"
+            />
+            <label htmlFor="orderByAuthor" className="main-page__box"></label>
+            <label htmlFor="orderByAuthor" className="main-page__lbl">
+              Order By Author
+            </label>
+          </div>
           <SelectFilter
             filter={ this.state.filter }
             data={ this.state }

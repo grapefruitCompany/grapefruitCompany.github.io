@@ -160,18 +160,18 @@ class ReactSelect extends React.Component {
     //second select(which show options of tag)
     let valueSelectClass = '';
     if (this.state.mainTag || this.props.filter.tag) {
-      valueSelectClass = 'select-filter';
+      valueSelectClass = 'select-filter__input';
     } else {
-     valueSelectClass = 'select-filter select-filter__disabled';
+     valueSelectClass = 'select-filter__input select-filter__input--disabled';
     }
 
     return (
-      <>
+      <div className="select-filter">
         <select
           onChange={this.handleChangeTag}
           name="tagSelect"
           id="tagSelect"
-          className="select-filter"
+          className="select-filter__input"
         >
           { showTagsSelect() }
         </select>
@@ -182,7 +182,7 @@ class ReactSelect extends React.Component {
           className={ valueSelectClass }>
           { showValueSelect() }
         </select>
-      </>
+      </div>
     );
   }
 }

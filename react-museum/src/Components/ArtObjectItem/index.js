@@ -6,15 +6,12 @@ import '../../Styles/main.scss';
 //this conponent is diplaynig each art object on main page
 
 class ArtObjectItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      popUpContent: {
-        objectNumber: '',
-        webImageUrl: '',
-        longTitle: '',
-        description: ''
-      }
+  state = {
+    popUpContent: {
+      objectNumber: '',
+      webImageUrl: '',
+      longTitle: '',
+      description: ''
     }
   }
 
