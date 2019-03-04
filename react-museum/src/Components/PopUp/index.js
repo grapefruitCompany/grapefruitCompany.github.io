@@ -9,7 +9,10 @@ class PopUp extends React.Component {
     let popUpClass = ['pop-up '],
         urlArtObjectDetail = '/';
     if (this.props.popUpContent.objectNumber.length) {
+      //when it's clicked on art object item we receive props 
+      //and we are changing class name to display popUp 
       popUpClass.push('pop-up--show');
+      //setting url that we will use when go to Art Object Details Page
       urlArtObjectDetail = urlArtObjectDetail + this.props.popUpContent.objectNumber;
     } 
 
@@ -32,5 +35,3 @@ class PopUp extends React.Component {
 }
 
 export default PopUp;
-
-// <button className="pop-up__btn">View more details</button>

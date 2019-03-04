@@ -4,6 +4,9 @@ import '../../Styles/main.scss';
 import chroma from 'chroma-js';
 import { Link } from "react-router-dom";
 
+//this is page dispay all info about art object
+//we are coming to this page from PopUp
+
 class ArtObjectDetails extends React.Component {
   state = {
     objectNumber: null,
@@ -11,7 +14,7 @@ class ArtObjectDetails extends React.Component {
     plaqueDescriptionDutch: null,
     plaqueDescriptionEnglish: null,
     webImageUrl: null,
-    //further is tags wich we using for filter
+    //further is tags wich we are using for filter
     type: null,
     datingPeriod: null,
     technique: null,
@@ -21,7 +24,7 @@ class ArtObjectDetails extends React.Component {
 
   componentDidMount() {
     const { objectnumber } = this.props.match.params;
-    let url = `https://www.rijksmuseum.nl/api/nl/collection/${objectnumber}?key=E7u3uumr&format=json`;
+    let url = `https://www.rijksmuseum.nl/api/nl/collection/${objectnumber}?key=E7u3uumr&format=json`;//we are requesting additional info from api about this object
     fetch(url)
       .then(response => {
         response.json().then(data => {
@@ -36,8 +39,8 @@ class ArtObjectDetails extends React.Component {
               webImage,
               techniques,
               objectTypes
-            } = data.artObject;
-          if (!webImage) webImage = {url: './img/No_Image_available.jpg'};
+            } = data.artObject;//destrusturing all data that we need
+          if (!webImage) webImage = {url: './img/No_Image_available.jpg'};//if we don't have image, we are using no image piture
           this.setState({
             objectNumber: objectNumber,
             longTitle: longTitle,
@@ -61,15 +64,16 @@ class ArtObjectDetails extends React.Component {
     };
 
     let showDecription = (lang, desc) => {
+      //this function for displaying dicription if it has it
       let result;
-      if (desc && lang === 'en') {
+      if (desc && lang === 'en') {//decription in english
         result = (
           <div>
             <h3 className='art-page__title art-page__title--sub'>Description in English</h3>
             <p>{ desc }</p>
           </div>
         );
-      } else if (desc && lang === 'nl') {
+      } else if (desc && lang === 'nl') {//decription in dutch
         result = (
           <div>
             <h3 className='art-page__title art-page__title--sub'>Description in Dutch</h3>
@@ -81,18 +85,20 @@ class ArtObjectDetails extends React.Component {
     }
 
     let showPeriod = (data) => {
+      //this function is dispaying pariod and adding link to it
       let result;
-        if (data) {
+        if (data) { //for each type of data there is different condition statement
           result = (
             <li className="art-page__item">
               Period: 
               <Link
                 className="art-page__link"
                 to={{
+                  //here we pass parametrs by link
                   pathname: '/',
                   state: {
-                    tag: 'datingPeriod',
-                    value: data
+                    tag: 'datingPeriod', //name of the tag
+                    value: data //value of tag
                   }
                 }}
               >
@@ -105,6 +111,7 @@ class ArtObjectDetails extends React.Component {
     }
     
     let showArray = (tagName, data) => {
+      //this function is for dispaying array like material, type and so on
       let links = [];
         if (data && data.length) {
           for (let i = 0; i < data.length; i++) {
@@ -135,9 +142,12 @@ class ArtObjectDetails extends React.Component {
     }
 
     let showColor = (data) => {
+      //for color we use specific funtion because of styling
       let links = [];
         if (data && data.length) {
           for (let i = 0; i < data.length; i++) {
+            //we are changing color of background of the button depending on each color hex
+            //for this we are using chroma() npm package
             let styling = { 'backgroundColor': chroma(data[i].match(/\#\w*/g).join('')) };
             links.push(
               <Link

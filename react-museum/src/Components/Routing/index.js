@@ -3,10 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import MainPage from '../MainPage';
 import ArtObjectDetails from '../ArtObjectDetails';
 
-// import Redirect from 'react-router-dom/es/Redirect';
-// import Page404 from '../Page404';
-
-
 class Routing extends React.Component {
   render() {
     return (
@@ -21,6 +17,3 @@ class Routing extends React.Component {
 }
 
 export default Routing;
-
-// <Route path="/404" component={ Page404 } />
-// <Redirect to="/404"/>

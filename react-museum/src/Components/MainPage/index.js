@@ -9,16 +9,16 @@ import '../../Styles/main.scss';
 //Search by maker doesn't work at all: https://github.com/Rijksmuseum/api-issues/issues/11
 
 //Todo List for release version
-// SelectFilter:
-// - Убрать повторения в массиве цветов
 
-// MainPage:
+// Add Order By Tag:
+// - запрашиваем всегда 10000 арт объектов
+// - в зависимости от выбрного Тег делаем сортировку по его значением и обновляем стейт: filter.tag
+// - если у арт объекта несколько значений тега в массиве, то сортируем по первому
+// - обновляем компоненты OnPageButtons и Paginator на отображение без запроса на сервер
 // - Добавить чекбокс, отображать или не отоюражать объекты без картинок
 
-// Везде: 
-// - добавить комментарии
+// Adaptive lasyouts: 
 // - добавить везде адаптацию под планшет и мобайл
-// - проверить везде стили и код
 
 // =>> deploy on github pages
 
@@ -36,6 +36,7 @@ class MainPage extends React.Component {
       objectsOnPage: 5,
       baseUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
       lastUrl: 'https://www.rijksmuseum.nl/api/nl/collection?key=E7u3uumr&format=json',
+      //further goes lists of tags
       type: [],
       datingPeriod: [],
       material: [],
@@ -46,25 +47,31 @@ class MainPage extends React.Component {
 
   componentDidMount() {
     if (this.props.location.state) {
+      //if we passed some props by link, it happens from components ArtObjectDetails
+      // and SelectFilter we receive tag and value in location.state
       this.matchingUrlAndFilter(this.props.location.state.tag, this.props.location.state.value);
     } else {
+      //if not, just launching regulart api request
       this.getCollection(this.state.pageNumber, this.state.objectsOnPage);
     }
   }
 
   matchingUrlAndFilter(tag, value) {
+    //this function specifies url link for each api request depending on tag and value
+    //that we received from components ArtObjectDetails and SelectFilter
     let currentUrl;
     switch (tag) {
       case ('normalized32Colors'):
-        value = value.match(/\w*/g).join('');
-        currentUrl = this.state.baseUrl + '&f.normalized32Colors.hex=%23' + value;
+        value = value.match(/\w*/g).join('');//we receive value of color like, #B0B0B0 but for api request we must put aside hashtag symbol
+        currentUrl = this.state.baseUrl + '&f.normalized32Colors.hex=%23' + value;//here we specify link for api request depending on each tag
         this.setState({
           filter: {
+            //updating state with actual filters working
             tag: 'normalized32Colors',
             value: value
           }
         });
-        this.getFilter(currentUrl);
+        this.getFilter(currentUrl);//luanching api request with specified url
         break;
       case ('type'):
         currentUrl = this.state.baseUrl + '&type=' + value;
@@ -114,7 +121,7 @@ class MainPage extends React.Component {
 
   getFilter(currentUrl) {
     this.setState({
-      lastUrl: currentUrl,
+      lastUrl: currentUrl, //updationg current url for request in state
       pageNumber: 1
     });
     fetch(`${currentUrl}&p=${this.state.pageNumber}&ps=${this.state.objectsOnPage}`)
@@ -122,6 +129,7 @@ class MainPage extends React.Component {
         response.json()
         .then(data => {
           this.setState({
+            //refreshing all data in state
             artObjects: data.artObjects,
             count: data.count,
             type: data.facets[1].facets,
@@ -135,6 +143,7 @@ class MainPage extends React.Component {
   }
 
   getCollection(pageNumber, objectsOnPage = this.state.objectsOnPage) {
+    //this function is making request for pagination or for displaying different quantity of art objects on page 
     let currentUrl = this.state.lastUrl;
     fetch(`${currentUrl}&p=${pageNumber}&ps=${objectsOnPage}`)
       .then(response => {
@@ -156,6 +165,7 @@ class MainPage extends React.Component {
   }
 
   getAllMatches(query) {
+    //this function is looking all matches in ort object also it's used for reset
     let currentUrl = `${this.state.baseUrl}&q=${query}`;
     this.setState({
       lastUrl: currentUrl,
@@ -179,6 +189,7 @@ class MainPage extends React.Component {
   }
 
   handleChange(e) {
+    //when we put somting in search input
     if (e.target.value && e.target.value.length > 1) {
       this.getAllMatches(e.target.value);
     } else if (e.target.value.length === 0) {
@@ -187,11 +198,12 @@ class MainPage extends React.Component {
   }
 
   reset() {
+    //when we reset our form
     this.getAllMatches('');
   }
 
   render() {
-    let count = this.state.count > 10000 ? 10000 : this.state.count,
+    let count = this.state.count > 10000 ? 10000 : this.state.count,//we reseive by api no more then 10 000 art objects
         numberArtObjectsFrom = this.state.objectsOnPage * this.state.pageNumber - this.state.objectsOnPage + 1,
         numberArtObjectsTo = (numberArtObjectsFrom + this.state.objectsOnPage) > count ? count : (this.state.objectsOnPage * this.state.pageNumber);
     return (

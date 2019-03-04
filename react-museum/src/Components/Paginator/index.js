@@ -10,6 +10,7 @@ class Paginator extends React.Component {
           result = [];
 
       if (pageNumber === 1) {
+        //if it's current page our 'previous page' arrow should be disabled 
         result.push(
           <button className="paginator__item paginator__item--disabled" key={ 0 }>
             &#8592;
@@ -32,6 +33,7 @@ class Paginator extends React.Component {
   
         switch(true) {
           case (i === pageNumber):
+            //if it's current page, we are changing class name in markup
             markup = (
               <button className="paginator__item  paginator__item--current" key={ i }>
                 { i }
@@ -42,10 +44,13 @@ class Paginator extends React.Component {
           case (Math.abs(pageNumber - i) === 2 && pageNumber === totalPages):
           case (Math.abs(pageNumber - i) === 2 && pageNumber === 1):
           case (Math.abs(pageNumber - i) === 1):
+            //if it's closest page numbers, or first and last page number
+            //we are not changing our markup
             break;
           case (Math.abs(pageNumber - i) === 2):
           case (pageNumber === 1 && Math.abs(pageNumber - i) === 3):
           case (pageNumber === totalPages && Math.abs(pageNumber - i) === 3):
+            //here we changing markup to dispaly dots
             markup = (
               <button className='paginator__dots' key={ i }>
                 ...
@@ -53,6 +58,7 @@ class Paginator extends React.Component {
               );
             break;
           default:
+            //for all other ceses we are displaying nothing 
             markup = '';
             break;
         }
@@ -60,6 +66,7 @@ class Paginator extends React.Component {
       }
   
       if (pageNumber === totalPages) {
+        //last element is 'next page' arrow, and if it's last page, so it should be disabled
         result.push(
           <button className="paginator__item paginator__item--disabled" key={ result.length + 1 }>
             &#8594;

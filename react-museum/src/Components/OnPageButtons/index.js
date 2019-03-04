@@ -2,6 +2,8 @@ import React from 'react';
 import './style.scss';
 import '../../Styles/main.scss';
 
+//this component is displaying buttons which switch quantity of objects on page
+
 class OnPageButtons extends React.Component {
 
   render() {
