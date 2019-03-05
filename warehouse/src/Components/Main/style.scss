@@ -1,0 +1,30 @@
+@import '../../Styles/main.scss';
+
+.main {
+  padding: 20px;
+  font-size: 15px;
+
+  &__list {
+  
+  }
+
+  &__item {
+    
+  }
+
+  &__btn {
+
+  }
+
+  &__cbx {
+    margin-right: 5px;
+
+    &:not(:checked) ~ .main__list {
+      display: none;
+    }
+
+    &:checked ~ .main__list {
+      display: block;
+    }
+  }
+}
