@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+</head>
+<body>
+  <section>
+    <div class="slider">
+      <div class="slider__inner">          
+
+        <div class="slider__item">
+          <h2>Welcome <span id="userName" class="slider__name"></span>, your role is User</h2> <br>
+          <button id="logOutUser">Log Out</button> <br>
+          <button>Show News</button> <br>
+          <button>Edit Profile</button> <br>          
+        </div>
+
+        <div class="slider__item">
+          <form action="#" method="post">
+            <h2>Already have account?</h2>
+            <label for="login">Name:</label><br>
+            <input type="text" id="login" name="login" value="Login" required><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" id="password" minlength="6" maxlength="12" autocomplete="off" value="******" required ><br>
+            <input id="loginButton" type="submit" value="Submit"><br>
+          </form>
+          <form action="#" method="post">
+            <h2>Sign Up</h2>
+            <label for="loginNew">Name:</label><br>
+            <input type="text" id="loginNew" name="loginNew" value="Login" required><br>
+            <label for="passNew">Password:</label><br>
+            <input type="password" id="passNew" name="passNew" minlength="6" maxlength="12" autocomplete="off" value="******" required ><br>
+            <label for="passCheck">Repeat Password:</label><br>
+            <input type="password" id="passCheck" name="passCheck" minlength="6" maxlength="12" autocomplete="off" value="******" required ><br>
+            <label for="isAdmin">Admin:</label>
+            <input type="checkbox" id="isAdmin" name="isAdmin"><br>
+            <input id="signUpButton" type="submit" value="Submit"><br>
+          </form>
+        </div>
+
+        <div class="slider__item">
+          <h2>Welcome <span id="adminName" class="slider__name"></span> , your role is Admin</h2> <br>
+          <button id="logOutAdmin">Log Out</button> <br>
+          <button>Show News</button> <br>
+          <button>Edit News</button> <br>
+          <button>Delete News</button> <br>
+          <button>Edit Profile</button> <br>  
+        </div>       
+        
+      </div>
+    </div>
+
+
+    <div id="loginError"></div>
+  </section>
+</body>
+</html>
