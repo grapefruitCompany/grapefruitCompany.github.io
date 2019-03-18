@@ -1,19 +1,22 @@
-let xmen = ['Cyclops', 'Wolverine', 'Rogue'];
+function User(f, l) {
+  this.f = f;
+  this.l = l;
 
-console.info('=> for');
-for (let index = 0; index < xmen.length; index++) {
-  console.log(xmen[index]);
+  this.print = function() {
+    console.log(this.f + ' ' + this.l);
+  };
 }
 
-console.info('=> for...in');
-for (let key in xmen) {
-  console.log(xmen[key]);
+function Manager(f, l) {
+  User.apply(this, arguments);
 }
 
-console.info('=> forEach');
-xmen.forEach(xman => console.log(xman));
+Manager.prototype = new User;
 
-console.info('=> for...of');
-for (let xman of xmen) {
-  console.log(xman);
-}
+Manager.prototype.test = 1;
+
+let u = new User('Levi', '9');
+let m = new Manager('test', 'test');
+
+console.log(u.test);
+console.log(m.test);
