@@ -1,3 +1,7 @@
+// => SignUpForm проверка паролей готова, дальше нужно получить ответ формы при нажатии на кнопку
+// => ответ формі будет нашим новім аккаунтом юзера
+// => добавить проверку что логин должен біть не занят
+
 // Зробіть форму для сайнапу (реєстрація нового користувача) 
 // з полями ім'я, пароль, повторити пароль, чекбокс "адміністратор". 
 // Ім'я і пароль є обов'язковими. 
@@ -25,9 +29,9 @@
   var guestFirst = new Guest('Aaa', '123456'),
       guestSecond = new Guest('Bbb', '123456'),
       adminFirst = new Admin('Ccc', '123456789'),
-      login = document.getElementById('login'),
-      password = document.getElementById('password'),
-      buttonLogin = document.getElementById('loginButton'),
+      // login = document.getElementById('login'),
+      // password = document.getElementById('password'),
+      // buttonLogin = document.getElementById('loginButton'),
       loginError = document.getElementById('loginError'),
       userName = document.getElementById('userName'),
       adminName = document.getElementById('adminName'),
@@ -36,27 +40,63 @@
       logOutAdmin = document.getElementById('logOutAdmin'),
       currentUser;
 
-//console.log(buttons);
+  var loginForm = {
+    login: document.getElementById('login'),
+    password: document.getElementById('password'),
+    buttonLogin: document.getElementById('loginButton'),
+  }
+
+  var signUpForm = {
+    loginNew: document.getElementById('loginNew'),
+    passwordNew: document.getElementById('passNew'),
+    passwordCheck: document.getElementById('passCheck'),
+    isAdmin: document.getElementById('isAdmin'),
+    buttonSignUp: document.getElementById('signUpButton')
+  }
 
   checkLoginAndRole();
 
-  buttonLogin.addEventListener('click', function(e){
+  loginForm.buttonLogin.addEventListener('click', function(e){
     e.preventDefault();
-
-    if (password.value === currentUser.password) {
+    if (loginForm.password.value === currentUser.password) {
       chooseSliderAndSetName(currentUser);
       loginError.innerHTML = '';
     } else {
-      this.className = 'js__input--error';
+      this.classList.add('js__input--error');
       loginError.innerHTML = 'Error! Your password is wrong, try again.';
     }
-    password.onfocus = function() {
-      if (this.className == 'js__input--error') { // сбросить состояние "ошибка", если оно есть
-        this.className = '';
-        loginError.innerHTML = '';
-        loginError.style.color = 'red';
-      }
-    };
+  });
+
+  loginForm.password.addEventListener('focus', function(){
+    if (loginForm.buttonLogin.classList.contains('js__input--error')) { // сбросить состояние "ошибка", если оно есть
+      loginForm.buttonLogin.classList.remove('js__input--error');
+      loginError.innerHTML = '';
+      loginError.style.color = 'red';
+    }
+  });
+
+  signUpForm.passwordNew.addEventListener('blur', function() {
+    if ((this.value.length >= 6)) {
+      this.classList.remove('js__input--error');
+      signUpForm.passwordCheck.disabled = false;
+      loginError.innerHTML = '';
+    } else {
+      this.classList.add('js__input--error');
+      signUpForm.passwordCheck.disabled = true;
+      loginError.innerHTML = 'Error! Length or your password should be from 6 and till 12 symbols';
+    }
+  });
+
+  signUpForm.passwordCheck.addEventListener('blur', function() {
+    if (this.value === signUpForm.passwordNew.value) {
+      this.classList.remove('js__input--error');
+      signUpForm.passwordNew.classList.remove('js__input--error');
+      loginError.innerHTML = '';
+    } else {
+      this.classList.add('js__input--error');
+      signUpForm.passwordNew.classList.add('js__input--error');
+      loginError.innerHTML = 'Error! Your password is not equal.';
+    }
   });
 
   logOutUser.addEventListener('click', logOut);
@@ -88,7 +128,7 @@
   }
 
   function checkLoginAndRole() {
-    login.onblur = function() {
+    loginForm.login.onblur = function() {
       var result = false;
       for (var key in usersList) {
         if (this.value === usersList[key].name) {
@@ -106,7 +146,7 @@
       }
     };
 
-    login.onfocus = function() {
+    loginForm.login.onfocus = function() {
       if (this.className == 'js__input--error') { // сбросить состояние "ошибка", если оно есть
         this.className = '';
         loginError.innerHTML = '';
@@ -179,6 +219,5 @@
       return currentCount++;
     };
   }
-
   
 }());
