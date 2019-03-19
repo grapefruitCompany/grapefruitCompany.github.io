@@ -1,0 +1,34 @@
+.cbx {
+  
+  &__lbl {
+    margin-left: 15px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border: 1px solid $cbx-border;
+      transition: all .5s;
+    }
+  }
+
+  &__box {
+    display: none;
+
+    &:checked ~ .cbx__lbl:before {
+      border-top: none;
+      border-right: none;
+      border-color: $cbx-border-checked;
+      left: -10px;
+      width: 10px;
+      height: 5px;
+      transform: rotate(-65deg);
+      transform-origin: 0% 20%;
+    }
+  }
+}

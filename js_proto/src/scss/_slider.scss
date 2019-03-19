@@ -39,9 +39,20 @@
 
   &__form {
     font-size: $font-size;
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
 
     &:first-child {
       margin-right: 15px;
     }
+  }
+
+  &__field {
+    margin-bottom: 10px;
+  }
+
+  &__lbl {
+    margin-bottom: 5px;
   }
 }
