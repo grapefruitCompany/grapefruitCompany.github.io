@@ -1,4 +1,4 @@
-// => SignUpForm проверка паролей готова, дальше нужно получить ответ формы при нажатии на кнопку
+// => Дальше нужно получить ответ формы при нажатии на кнопку
 // => ответ формі будет нашим новім аккаунтом юзера
 // => добавить проверку что логин должен біть не занят
 
@@ -29,9 +29,6 @@
   var guestFirst = new Guest('Aaa', '123456'),
       guestSecond = new Guest('Bbb', '123456'),
       adminFirst = new Admin('Ccc', '123456789'),
-      // login = document.getElementById('login'),
-      // password = document.getElementById('password'),
-      // buttonLogin = document.getElementById('loginButton'),
       loginError = document.getElementById('loginError'),
       userName = document.getElementById('userName'),
       adminName = document.getElementById('adminName'),
@@ -75,16 +72,33 @@
     }
   });
 
+  signUpForm.loginNew.addEventListener('blur', function(){
+    for (var key in usersList) {
+      if (usersList[key].name === this.value) {
+        this.classList.add('js__input--error');
+        loginError.innerHTML = 'Error! This login is taken';
+      }
+    }
+  });
+
+  signUpForm.loginNew.addEventListener('focus', function(){
+    if (this.classList.contains('js__input--error')) {
+      this.classList.remove('js__input--error');
+      loginError.innerHTML = '';
+    }
+  });
+
   signUpForm.passwordNew.addEventListener('blur', function() {
     if ((this.value.length >= 6)) {
       this.classList.remove('js__input--error');
       signUpForm.passwordCheck.disabled = false;
       loginError.innerHTML = '';
-    } else {
+      this.classList.add('js__input--success');
+    } else if ((this.value.length > 0)) {
       this.classList.add('js__input--error');
       signUpForm.passwordCheck.disabled = true;
       loginError.innerHTML = 'Error! Length or your password should be from 6 and till 12 symbols';
-    }
+    } 
   });
 
   signUpForm.passwordCheck.addEventListener('blur', function() {

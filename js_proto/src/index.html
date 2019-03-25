@@ -24,7 +24,7 @@
             <form class="slider__form" action="#" method="post">
               <h2 class="slider__title">Already have account?</h2>
               <label class="slider__lbl" for="login">Name:</label>
-              <input class="slider__field" type="text" id="login" name="login" value="Login" required>
+              <input class="slider__field" type="text" id="login" name="login" placeholder="Login" required>
               <label class="slider__lbl" for="pass">Password:</label>
               <input class="slider__field" type="password" id="password" minlength="6" maxlength="12" autocomplete="off" placeholder="******" required >
               <input class="btn" id="loginButton" type="submit" value="Submit">
@@ -33,11 +33,11 @@
             <form class="slider__form" action="#" method="post">
               <h2 class="slider__title">Sign Up</h2>
               <label class="slider__lbl" for="loginNew">Name:</label>
-              <input class="slider__field" type="text" id="loginNew" name="loginNew" value="Login" required>
+              <input class="slider__field" minlength="6" maxlength="12" type="text" id="loginNew" name="loginNew" placeholder="Login" required>
               <label class="slider__lbl" for="passNew">Password:</label>
               <input class="slider__field" type="password" id="passNew" name="passNew" minlength="6" maxlength="12" autocomplete="off" placeholder="******" required >
               <label class="slider__lbl" for="passCheck">Repeat Password:</label>
-              <input class="slider__field" type="password" id="passCheck" name="passCheck" minlength="6" maxlength="12" autocomplete="off" placeholder="******" required >
+              <input class="slider__field" type="password" id="passCheck" name="passCheck" minlength="6" maxlength="12" autocomplete="off" placeholder="******" required disabled>
               <div class="cbx slider__field">
                 <input class="cbx__box" type="checkbox" id="isAdmin" name="isAdmin">
                 <label class="cbx__lbl" for="isAdmin">Admin</label>
