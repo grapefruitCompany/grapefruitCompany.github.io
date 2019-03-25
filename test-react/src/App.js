@@ -1,45 +1,23 @@
 import React, { Component } from 'react';
-import { connect, Provider } from 'react-redux';
-import { createStore } from 'redux';
-import './App.css';
 
-const initalState = {
-  firstName: '',
-  lastName: ''
-};
-
-const ACTION_CHANGE_FIRST_NAME = 'ACTION_CHANGE_FIRST_NAME';
-const ACTION_CHANGE_LAST_NAME = 'ACTION_CHANGE_LAST_NAME';
-
-const actionChangeFirstName = {
-  type: ACTION_CHANGE_FIRST_NAME,
-  payload: null
-};
-
-const actionChangeLastName = {
-  type: ACTION_CHANGE_LAST_NAME,
-  payload: null
-};
-
-const rootReducer = (state = initalState, action) => {
-  return state;
-}
-
-const store = createStore(rootReducer);
-
-console.log(store.getState());
+import { Header } from "./components/Header";
+import { Home } from "./components/Home";
 
 class App extends Component {
   render() {
-    console.log('Sup, how you doing?');
     return (
-      <Provider store={ store }>
-        <div className="App">
-          <div><input type="text" placeholder="First name"/></div>
-          <div><input type="text" placeholder="Last name"/></div>
-          <div></div>
+      <div className="container">
+        <div className="row">
+            <div className="col-xs-10 col-xs-offset-1">
+                <Header/>
+            </div>
         </div>
-      </Provider>
+        <div className="row">
+            <div className="col-xs-10 col-xs-offset-1">
+                <Home/>
+            </div>
+        </div>
+    </div>
     );
   }
 }
