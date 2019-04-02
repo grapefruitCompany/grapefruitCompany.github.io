@@ -1,6 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import {render} from 'react-dom';
+import {Router, Route, browserHistory} from 'react-router';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {Root} from './components/Root';
+import {Home} from './components/Home';
+import {User} from './components/User';
 
+class App extends React.Component {
+  render() {
+    return (
+      <Router history={browserHistory}>
+        <Route path={'user'} component={User} />
+        <Route path={'home'} component={Home} />
+      </Router>
+    );
+  }
+}
+
+render(<App />, window.document.getElementById('app'));
+
+ 
