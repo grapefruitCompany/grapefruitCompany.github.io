@@ -1,0 +1,30 @@
+$prime-color: lightblue;
+
+body {
+  background-color: $prime-color;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+li {
+  display: inline-block;
+  padding: 3px;
+  min-width: 150px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition: all .5s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: blue;
+    color: gray;
+  }
+
+  &:active {
+    transform: translateY(5px);
+  }
+}
